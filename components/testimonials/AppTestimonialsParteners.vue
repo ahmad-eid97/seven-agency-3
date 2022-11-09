@@ -1,0 +1,72 @@
+<template>
+    <section class="about-partners">
+        
+        <carousel :items='5' :margin='40' :dots="false" :nav="false" :loop="true" :autoplay="true">
+            <div class="item">
+                <img class="" src="/assets/images/brand-style1.png" width="150" height="150">
+            </div>
+            <div class="item">
+                <img class="" src="/assets/images/brand-style2.png" width="150" height="150">
+            </div>
+            <div class="item">
+                <img class="" src="/assets/images/brand-style3.png" width="150" height="150">
+            </div>
+            <div class="item">
+                <img class="" src="/assets/images/brand-style4.png" width="150" height="150">
+            </div>
+            <div class="item">
+                <img class="" src="/assets/images/brand-style5.png" width="150" height="150">
+            </div>
+        </carousel>
+    </section>
+</template>
+
+<script>
+import carousel from 'vue-owl-carousel'
+
+export default {
+    name: 'AppTestimonialsParteners',
+    components: { carousel },
+    data() {
+        return {
+        }
+    }
+}
+</script>
+<style>
+    .about-partners {
+        padding: 45px 100px 0;
+        background-color: transparent;
+        background-image: -webkit-linear-gradient(left,#260633,#ec615d);
+    }
+    .about-partners::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url(/assets/images/brand-bg.png);
+    }
+    .about-partners .owl-carousel {
+        margin-bottom: 40px;
+    }
+    .about-partners .owl-carousel .item  {
+        text-align: center;
+    }
+    .about-partners .owl-carousel .item img {
+        max-height: 115px;
+        width: auto;
+        display: inline;
+        max-width: 100%;
+        height: auto;
+    }
+    .about-partners .owl-carousel .owl-nav.disabled {
+        display: none !important;
+    }
+
+</style>
