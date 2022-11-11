@@ -133,6 +133,7 @@ export default {
         background-attachment: scroll;
         padding: 60px 30px 80px;
         position: relative;
+        text-align: center;
     }
     .process::after {
         top: 0;
