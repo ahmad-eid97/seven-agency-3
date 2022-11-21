@@ -44,14 +44,16 @@
         top: -10vh;" data-idcheck="true" data-stylerecorder="true" data-initialised="true">
             <img src="//the7.io/agency/wp-content/uploads/sites/43/2017/10/art-poly-slider.png" alt="" class="tp-rs-img rs-lazyload" data-lazyload="//the7.io/agency/wp-content/uploads/sites/43/2017/10/art-poly-slider.png" data-no-retina="" data-src-rs-ref="//the7.io/agency/wp-content/uploads/sites/43/2017/10/art-poly-slider.png" style="position: relative; height: 100%; width: 100%;" width="2566" height="1144">
         </div> -->
-        <div class="intro">
-            <div class="row m-0 align-items-center justify-content-center">
-                <div class="col-auto text-center">
-                    <img src="/assets/images/logo.png" alt="logoImage" style="width: 250px" class="">
-                    <h1>OUR <span>SERVICES</span></h1>
-                    <img class="scrolldown" src="//the7.io/agency/wp-content/uploads/sites/43/2021/09/arrow-down-40.png" alt="">
+        <div v-tilt="{tiltMaxAngleY: 10, tiltMaxAngleX: 10}" class="intro">
+            <div class="intro">
+                <div class="row m-0 align-items-center justify-content-center">
+                    <div class="col-auto text-center">
+                        <img src="/assets/images/logo.png" alt="logoImage" style="width: 250px" class="animatedTop">
+                        <h1 class="animatedLeft">OUR <span>SERVICES</span></h1>
+                        <img class="scrolldown" src="//the7.io/agency/wp-content/uploads/sites/43/2021/09/arrow-down-40.png" alt="">
+                    </div>
+                    
                 </div>
-                
             </div>
         </div>
         <header :class="!topOfPage ? 'onScroll' : '' ">
