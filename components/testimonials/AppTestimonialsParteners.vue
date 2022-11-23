@@ -1,36 +1,58 @@
 <template>
     <section class="about-partners">
-        
-        <carousel :items='5' :margin='40' :dots="false" :nav="false" :loop="true" :autoplay="true">
-            <div class="item">
-                <img class="" src="/assets/images/brand-style1.png" width="150" height="150">
-            </div>
-            <div class="item">
-                <img class="" src="/assets/images/brand-style2.png" width="150" height="150">
-            </div>
-            <div class="item">
-                <img class="" src="/assets/images/brand-style3.png" width="150" height="150">
-            </div>
-            <div class="item">
-                <img class="" src="/assets/images/brand-style4.png" width="150" height="150">
-            </div>
-            <div class="item">
-                <img class="" src="/assets/images/brand-style5.png" width="150" height="150">
-            </div>
-        </carousel>
+    <swiper :options="swiperOption" class="owl-carousel">
+      <swiper-slide v-for="partner in partners.partners" :key="partner.id">
+        <div class="item">
+          <img
+            class="imgo"
+            :src="partner.image"
+            width="150"
+            height="150"
+          />
+        </div>
+      </swiper-slide>
+    </swiper>
     </section>
 </template>
 
 <script>
-import carousel from 'vue-owl-carousel'
-
 export default {
     name: 'AppTestimonialsParteners',
-    components: { carousel },
-    data() {
-        return {
-        }
-    }
+  data() {
+    return {
+      swiperOption: {
+        loop: true,
+        slidesPerView: 5,
+        spaceBetween: 50,
+        breakpoints: {
+          // when window width is >= 320px
+          100: {
+            slidesPerView: 1,
+            spaceBetween: 5,
+          },
+          // when window width is >= 480px
+          480: {
+            slidesPerView: 2,
+            spaceBetween: 5,
+          },
+          // when window width is >= 640px
+          640: {
+            slidesPerView: 3,
+            spaceBetween: 5,
+          },
+          992: {
+            slidesPerView: 4,
+            spaceBetween: 5,
+          },
+          1200: {
+            slidesPerView: 5,
+            spaceBetween: 5,
+          },
+        },
+      },
+    };
+  },
+  props: ["partners"]
 }
 </script>
 <style>

@@ -4,17 +4,20 @@
             <div class="section-title text-center">
                 <span class="sp-color2">Our Clients</span>
                 <h2>Our Clients Feedback</h2>
-                <div class="heading-spacer">
-                    <font-awesome-icon icon="fa-solid fa-angle-down" />
-                </div>
+                
             </div>
             <div class="col-12">
-                <carousel :items='1' :dots='false' :loop="true" :autoplay="true" :navText="['<','>']">
+                
+                <swiper
+                    :options="swiperOption"
+                >
+
+                    <swiper-slide v-for="client in clients.testimonials" :key="client.id">
                         <div class="item">
                             <div class="row align-items-center">
                                 <div class="col-lg-6">
                                     <div class="clients-slider-img">
-                                        <img src="/assets/images/client-1.png" alt="Images">
+                                        <img :src="client.image" alt="Images">
                                         <div class="clients-slider-circle"></div>
                                     </div>
                                 </div>
@@ -24,48 +27,37 @@
                                             <font-awesome-icon icon="fa-solid fa-quote-left" />
                                         </div>
                                         <p>
-                                            “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at ligula eget lectus consequat volutpat. Donec elit libero, finibus eget scelerisque sed, tempor sit amet erat. Pellentesque tincidunt a purus sit amet ullamcorper. Vestibulum ultrices ligula in pharetra sagittis. Quisque lacinia magna dolor, at tempus sem consequat at.”
+                                            {{client.description}}
                                         </p>
-                                        <h3>Jonthon Martin</h3>
-                                        <span>App Developer</span>
+                                        <h3>{{client.title}}</h3>
+                                        <span>{{client.job}}</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="item">
-                            <div class="row align-items-center">
-                                <div class="col-lg-6">
-                                    <div class="clients-slider-img">
-                                        <img src="/assets/images/client-2.png" alt="Images">
-                                        <div class="clients-slider-circle"></div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="clients-slider-content">
-                                        <div class="svg">
-                                            <font-awesome-icon icon="fa-solid fa-quote-left" />
-                                        </div>
-                                        <p>
-                                            “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at ligula eget lectus consequat volutpat. Donec elit libero, finibus eget scelerisque sed, tempor sit amet erat. Pellentesque tincidunt a purus sit amet ullamcorper. Vestibulum ultrices ligula in pharetra sagittis. Quisque lacinia magna dolor, at tempus sem consequat at.”
-                                        </p>
-                                        <h3>Jonthon Martin</h3>
-                                        <span>App Developer</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </carousel>
+                    </swiper-slide>
+
+                </swiper>
+
             </div>
         </div>
     </section>
 </template>
 
 <script>
-import carousel from 'vue-owl-carousel'
 
 export default {
     name: 'AppTestimonialsItems',
-    components: {carousel},
+    data() {
+        return {
+            swiperOption: {
+                loop: true,
+                slidesPerView: 1,
+                spaceBetween: 50,
+            }
+        }
+    },
+    props: ["clients"]
 }
 </script>
 
@@ -75,7 +67,6 @@ export default {
   z-index: 1;
   background-color: #fff;
   padding-bottom: 0 !important;
-  background: #f5f5f5;
 }
 .clients-area::before {
   content: '';
@@ -98,26 +89,26 @@ export default {
   margin-bottom: 8px;
   font-weight: 600;
   display: block;
-  color: #f3615a;
+  color: var(--main-color);
 }
 .clients-area-two .section-title h2 {
-    font-weight: 400;
-    line-height: 41.6px;
-    letter-spacing: 1px;
-    text-transform: capitalize;
-    margin-bottom: 20px;
-}
-.clients-area-two .seprator{
-    align-self: center;
-    margin-left: auto;
+    max-width: 600px;
+    color: #252525;
+    font-size: 35px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 42px;
+    text-align: left;
+    margin-top: 10px;
     margin-right: auto;
-    margin-top: 0px;
-    margin-bottom: 30px;
-    width: 100%;
-    max-width: 206px;
-    border-color: rgb(254, 208, 61);
-    border-top-width: 2px;
-    border-top-style: solid;
+    margin-bottom: 15px;
+    margin-left: auto;
+    text-align: center;
+}
+.clients-area-two .seprator img {
+  width: 70px;
+  margin-top: 5px;
+  margin-bottom: 20px;
 }
 
 .clients-area .owl-carousel {
@@ -149,26 +140,29 @@ export default {
   height: 90%;
   -webkit-animation: border-transform 15s infinite ease-in-out;
   animation: border-transform 15s infinite ease-in-out;
-    background-color: transparent;
-        background-image: -webkit-linear-gradient(left,#260633,#ec615d);
-    
+    background: var(--main-color);
 }
 .clients-area p {
-    color: #212934;
+    color: var(--main-color);
 }
 .clients-slider-content .svg {
-  border-radius: 0;
+  border-radius: 12px;
   width: 80px;
   height: 80px;
   line-height: 82px;
   font-size: 40px;
-  background-color: #f3615a;
+  background-color: var(--main-color);
   color: #fff;
   text-align: center;
   display: inline-block;
   margin-bottom: 30px;
   position: relative;
   z-index: 1;
+}
+
+.clients-slider-content {
+    padding: 30px 0px;
+    text-align: center;
 }
 
 .clients-slider-content .svg::after {
@@ -182,18 +176,18 @@ export default {
     width: 100%;
     height: 100%;
     background-color: transparent;
-    border: .5px solid #f3615a;
-    border-radius: 0;
+    border: .5px solid var(--main-color);
+    border-radius: 12px;
     -webkit-animation: ripple 2s infinite ease-in-out;
     animation: ripple 2s infinite ease-in-out;
 
 }
 .clients-area h3 {
-    color: #212934;
+    color: var(--main-color);
     margin: 15px 0 10px;
 }
 .clients-area span {
-    color: #212934;
+    color: var(--main-color);
 }
 .clients-area .owl-nav {
     position: absolute;
@@ -206,19 +200,19 @@ export default {
 .clients-area  .owl-nav .owl-prev:hover {
     background-color: transparent;
     display: inline-block;
-    border-radius: 0;
+    border-radius: 12px;
     bottom: 50px;
     text-align: center;
     line-height: 26px;
     font-size: 20px;
     position: absolute;
     padding: 4px 11px;
-    border: 2px solid #f3615a;
-    color: #f3615a;
+    border: 2px solid var(--main-color);
+    color: var(--main-color);
 }
 .clients-area .owl-nav .owl-next:hover, 
 .clients-area .owl-nav .owl-prev:hover {
-    background: #f3615a;
+    background: var(--main-color);
     color: #fff;
     transition: all 0.2s linear;
 }

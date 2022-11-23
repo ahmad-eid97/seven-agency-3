@@ -9,129 +9,20 @@
                 </div>
             </div>
             <div class="row pt-45">
-                <div class="col-3">
-                    <div class="item">
-                    <div class="row m-0 justify-content-center">
-                        <div class="col-auto user">
-                            <img src="https://the7.io/agency/wp-content/uploads/sites/43/2017/10/t007.jpg" alt="">
+                <div v-for="member in team.teams" :key="member.id" class="col-sm-6 col-md-4 projects-col">
+                    <div class="card">
+                        <div class="thumb">
+                            <img :src="member.image" alt="">
+                            <div class="rollover"></div>
                         </div>
-                        <div class="col-12 text">
-                            <h3>Logan White</h3>
-                            <h4>
-                                Photographer
-                            </h4>
-                            <p>
-                                Nullam volutpat mauris eu erat accumsan, sit amet lobortis odio finibus. Phasellus tempor leo sed est pretium, a malesuada quam lacinia.
-                            </p>
-                            <div href="#" class="social-owner">
-                                <a href="#">
-                                    <font-awesome-icon icon="fa-brands fa-behance" />
-                                </a>
-                                <a href="#">
-                                    <font-awesome-icon icon="fa-brands fa-instagram" />
-                                </a>
-                                <a href="#">
-                                    <font-awesome-icon icon="fa-brands fa-facebook-f" />
-                                </a>
-                                <a href="#">
-                                    <font-awesome-icon icon="fa-brands fa-twitter" />
-                                </a>
-                            </div>
+                        <div class="content">
+                            <h4>{{member.name}}</h4>
+                            <h5>{{member.job}}</h5>
+                            <h6>{{member.description}}</h6>
+                            <h5>{{member.phone}}</h5>
+                            <h5>{{member.email}}</h5>
+
                         </div>
-                    </div>
-                    </div>
-                </div><div class="col-3">
-                    <div class="item">
-                    <div class="row m-0 justify-content-center">
-                        <div class="col-auto user">
-                            <img src="https://the7.io/agency/wp-content/uploads/sites/43/2017/10/t007.jpg" alt="">
-                        </div>
-                        <div class="col-12 text">
-                            <h3>Logan White</h3>
-                            <h4>
-                                Photographer
-                            </h4>
-                            <p>
-                                Nullam volutpat mauris eu erat accumsan, sit amet lobortis odio finibus. Phasellus tempor leo sed est pretium, a malesuada quam lacinia.
-                            </p>
-                            <div href="#" class="social-owner">
-                                <a href="#">
-                                    <font-awesome-icon icon="fa-brands fa-behance" />
-                                </a>
-                                <a href="#">
-                                    <font-awesome-icon icon="fa-brands fa-instagram" />
-                                </a>
-                                <a href="#">
-                                    <font-awesome-icon icon="fa-brands fa-facebook-f" />
-                                </a>
-                                <a href="#">
-                                    <font-awesome-icon icon="fa-brands fa-twitter" />
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                </div><div class="col-3">
-                    <div class="item">
-                    <div class="row m-0 justify-content-center">
-                        <div class="col-auto user">
-                            <img src="https://the7.io/agency/wp-content/uploads/sites/43/2017/10/t007.jpg" alt="">
-                        </div>
-                        <div class="col-12 text">
-                            <h3>Logan White</h3>
-                            <h4>
-                                Photographer
-                            </h4>
-                            <p>
-                                Nullam volutpat mauris eu erat accumsan, sit amet lobortis odio finibus. Phasellus tempor leo sed est pretium, a malesuada quam lacinia.
-                            </p>
-                            <div href="#" class="social-owner">
-                                <a href="#">
-                                    <font-awesome-icon icon="fa-brands fa-behance" />
-                                </a>
-                                <a href="#">
-                                    <font-awesome-icon icon="fa-brands fa-instagram" />
-                                </a>
-                                <a href="#">
-                                    <font-awesome-icon icon="fa-brands fa-facebook-f" />
-                                </a>
-                                <a href="#">
-                                    <font-awesome-icon icon="fa-brands fa-twitter" />
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                </div><div class="col-3">
-                    <div class="item">
-                    <div class="row m-0 justify-content-center">
-                        <div class="col-auto user">
-                            <img src="https://the7.io/agency/wp-content/uploads/sites/43/2017/10/t007.jpg" alt="">
-                        </div>
-                        <div class="col-12 text">
-                            <h3>Logan White</h3>
-                            <h4>
-                                Photographer
-                            </h4>
-                            <p>
-                                Nullam volutpat mauris eu erat accumsan, sit amet lobortis odio finibus. Phasellus tempor leo sed est pretium, a malesuada quam lacinia.
-                            </p>
-                            <div href="#" class="social-owner">
-                                <a href="#">
-                                    <font-awesome-icon icon="fa-brands fa-behance" />
-                                </a>
-                                <a href="#">
-                                    <font-awesome-icon icon="fa-brands fa-instagram" />
-                                </a>
-                                <a href="#">
-                                    <font-awesome-icon icon="fa-brands fa-facebook-f" />
-                                </a>
-                                <a href="#">
-                                    <font-awesome-icon icon="fa-brands fa-twitter" />
-                                </a>
-                            </div>
-                        </div>
-                    </div>
                     </div>
                 </div>
             </div>
@@ -141,7 +32,8 @@
 
 <script>
 export default {
-    name: 'AppTestimonialsTeam'
+    name: 'AppTestimonialsTeam',
+    props: ["team"]
 }
 </script>
 
