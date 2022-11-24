@@ -15,7 +15,7 @@
                 <div v-for="service in services.services" :key="service.id" class="col-lg-3 col-sm-6 col-md-4" @click="$router.push(`/service/${service.id}`)">
                     <div class="services-card services-style-bg">
                         <div class="icon">
-                            <font-awesome-icon icon="fa-solid fa-person-dots-from-line" />
+                            <font-awesome-icon :icon="service.icon" />
                         </div>
                         <h3>
                             <router-link to="service">{{service.title}}</router-link>

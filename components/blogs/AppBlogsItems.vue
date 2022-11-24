@@ -16,8 +16,8 @@
                                 <img :src="blog.category.image" alt="Blog Images">
                             </router-link>
                             <div class="blog-tag">
-                                <h3>11</h3>
-                                <span>Dec</span>
+                                <h3>{{ $date(new Date(blog.publish_date), 'dd') }}</h3>
+                                <span>{{ $date(new Date(blog.publish_date), 'MMM') }}</span>
                             </div>
                         </div>
                         <h3 class="title">
