@@ -12,7 +12,7 @@
                     </span>    
                     <span>
                         <span style="color:#d0544e">mail:</span> 
-                        info@railcoder.com
+                        {{$store.state.websiteSettings.find(one => one.key === 'email').plain_value}}
                     </span>    
                 
                 </div>

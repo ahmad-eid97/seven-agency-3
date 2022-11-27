@@ -5,32 +5,20 @@
                 <div class="col-lg-6">
                     <div class="choose-content mr-20">
                         <div class="section-title">
-                            <span class="sp-color1">Why Choose Us</span>
-                            <h2>We Provide Truly Prominent It Solutions.</h2>
-                            <div class="heading-spacer">
-                                <font-awesome-icon icon="fa-solid fa-angle-down" />
-                            </div>
+                            <span class="sp-color1">{{whySection.find(one => one.key === 'why_choose_us_title').value}}</span>
+                            <h2>{{whySection.find(one => one.key === 'why_choose_us_sub_title').value}}</h2>
                             <p>
-                            Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum auctor a ornare odio.
+                                {{whySection.find(one => one.key === 'why_choose_us_description').value}}
                             </p>
                         </div>
                         <div class="row">
-                            <div class="col-lg-6 col-6">
+                            <div v-for="item in whySection.find(one => one.key === 'why_choose_us_list').value" :key="item" class="col-lg-6 col-6">
                                 <div class="choose-content-card">
                                     <div class="content">
-                                        <font-awesome-icon icon="fa-solid fa-hand-holding-hand" />
-                                        <h3>Experience</h3>
+                                        <font-awesome-icon :icon="item.icon" />
+                                        <h3>{{item.title}}</h3>
                                     </div>
-                                    <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-6">
-                                <div class="choose-content-card">
-                                    <div class="content">
-                                        <font-awesome-icon icon="fa-solid fa-circle-question" />
-                                        <h3>Quick Support</h3>
-                                    </div>
-                                    <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet</p>
+                                    <p>{{item.description}}</p>
                                 </div>
                             </div>
                         </div>
@@ -38,7 +26,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="choose-img">
-                        <img src="/assets/images/choose-img.jpg" alt="Images">
+                        <img :src="whySection.find(one => one.key === 'why_choose_us_image').value" alt="Images">
                     </div>
                 </div>
             </div>
@@ -48,14 +36,14 @@
 
 <script>
 export default {
-    name: 'AppAboutChoose'
+    name: 'AppAboutChoose',
+    props: ["whySection"]
 }
 </script>
 
 <style>
 .choose-area {
-    background-color: transparent;
-    background-image: -webkit-linear-gradient(left,#260633,#ec615d);
+    background-color: var(--main-color);
 }
 .choose-area .choose-content {
     margin-bottom: 30px;
@@ -65,8 +53,7 @@ export default {
   margin: 0 auto ;
   padding: 0;
   position: relative;
-  text-align: center;
-  color: #fff;
+  text-align: start;
 }
 .choose-area .section-title span {
     margin-bottom: 8px;
@@ -75,23 +62,16 @@ export default {
     color:#fff;
 }
 .choose-content .section-title h2 {
-    font-weight: 400;
-    line-height: 41.6px;
-    letter-spacing: 1px;
-    text-transform: capitalize;
-    margin-bottom: 20px;
-}
-.choose-content .section-title .seprator {
-    align-self: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0px;
-    margin-bottom: 30px;
-    width: 100%;
-    max-width: 206px;
-    border-color: #fff;
-    border-top-width: 2px;
-    border-top-style: solid;
+    color: #fff;
+    font-size: 35px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 42px;
+    text-align: left;
+    margin-top: 10px;
+    margin-right: 0px;
+    margin-bottom: 15px;
+    margin-left: 0px;
 }
 .choose-area .choose-content .section-title p {
     color: #fff;
@@ -112,7 +92,7 @@ export default {
     top: 10px;
     left: 0;
     font-size: 60px;
-    color:#f3615a;
+    color:#fff;
     line-height: 1;
 }
 .choose-area .choose-content .choose-content-card .content h3 {
@@ -131,12 +111,6 @@ export default {
     margin-bottom: 30px;
 }
 .choose-area .choose-img img {
-  border-radius: 0;
+  border-radius: 15px;
 }
-.choose-area .heading-spacer::before {
-        left: 35%;
-    }
-    .choose-area .heading-spacer::after {
-        right: 35%;
-    }
 </style>

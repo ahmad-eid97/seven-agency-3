@@ -3,14 +3,18 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <CoolLightBox :items="media" :index="index" @close="index = null">
-                    </CoolLightBox>
                     <div class="about-play">
-                        <img src="/assets/images/about-img1.jpg" alt="About Images">
+                        <img :src="experienceSection.find(one => one.key === 'experience_image').value" alt="About Images">
                         <div class="about-play-content">
                             <span>Watch Our Intro Video</span>
-                            <h2>Perfect Solution for It Services!</h2>
+                            <h2>{{experienceSection.find(one => one.key === 'experience_title_video').value}}</h2>
                             <div class="play-on-area">
+                                <CoolLightBox
+                                :items="media"
+                                :index="index"
+                                @close="index = null"
+                                >
+                                </CoolLightBox>
                                 <a class="play-on popup-btn" @click="openGallery()">
                                     <font-awesome-icon icon="fa-solid fa-play" />
                                 </a>
@@ -21,28 +25,26 @@
                 <div class="col-lg-6">
                     <div class="about-content ml-25">
                         <div class="section-title">
-                            <span class="sp-color2">15 Years of Experience</span>
-                            <h2>Right Partner for Software Innovation</h2>
-                            <div class="heading-spacer">
-                                <font-awesome-icon icon="fa-solid fa-angle-down" />
-                            </div>
+                            <span class="sp-color2">{{experienceSection.find(one => one.key === 'experience_title').value}}</span>
+                            <h2>{{experienceSection.find(one => one.key === 'experience_sub_title').value}}</h2>
+                            
                             <p>
-                            Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet.
+                                {{experienceSection.find(one => one.key === 'experience_description').value}}
                             </p>
                         </div>
                         <div class="row">
                             <div class="col-lg-6 col-md-6">
                                 <ul class="about-list text-start">
-                                <li><font-awesome-icon icon="fa-solid fa-circle-check" />Cost of Supplies and Equipment</li>
-                                <li><font-awesome-icon icon="fa-solid fa-circle-check" />Bribed Autor Nisi Elit Volume</li>
-                                <li><font-awesome-icon icon="fa-solid fa-circle-check" />Cost of Supplies and Equipment</li>
+                                    <li v-for="item in experienceSection.find(one => one.key === 'experience_title_list').value.split(',').slice(0, Math.ceil(experienceSection.find(one => one.key === 'experience_title_list').value.split(',').length / 2))" :key="item">
+                                        <font-awesome-icon icon="fa-solid fa-circle-check" /> {{item}}
+                                    </li>
                                 </ul>
                             </div>
                             <div class="col-lg-6 col-md-6">
                                 <ul class="about-list about-list-2 text-start">
-                                <li><font-awesome-icon icon="fa-solid fa-circle-check" />Change the Volume of Expected</li>
-                                <li><font-awesome-icon icon="fa-solid fa-circle-check" />Easy to Customer Services</li>
-                                <li><font-awesome-icon icon="fa-solid fa-circle-check" />Good Quality Products Services</li>
+                                    <li v-for="item in experienceSection.find(one => one.key === 'experience_title_list').value.split(',').slice(Math.ceil(experienceSection.find(one => one.key === 'experience_title_list').value.split(',').length / 2), Math.ceil(experienceSection.find(one => one.key === 'experience_title_list').value.split(',').length))" :key="item">
+                                        <font-awesome-icon icon="fa-solid fa-circle-check" /> {{item}}
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -52,38 +54,38 @@
             </div>
         </div>
         <ModalVideo
-            channel="youtube"
-            videoId="tUP5S4YdEJo"
-            :isOpen.sync="videoIsOpen"
+        channel="youtube"
+        :videoId="experienceSection.find(one => one.key === 'experience_url_video').value.split('=')[1]"
+        :isOpen.sync="videoIsOpen"
         />
     </div>
 </template>
 
 <script>
-import ModalVideo from "../ModalVideo";
+import ModalVideo from '../ModalVideo';
+
 export default {
     name: 'AppAboutExperiance',
     components: {
-        ModalVideo,
+        ModalVideo
     },
+    props: ["experienceSection"],
     data () {
         return {
-            media: [
-                {
-                type: "youtube",
-                thumb: "https://img.youtube.com/vi/WsptdUFthWI/hqdefault.jpg",
-                id: "tUP5S4YdEJo",
-                },
-            ],
+            media: [{ 
+                type: 'youtube',
+                thumb: this.experienceSection.find(one => one.key === 'experience_url_video').value,
+                id: 'tUP5S4YdEJo'
+            }],
             videoIsOpen: false,
-            index: "",
+            index: ''
         }
     },
     methods: {
         openGallery() {
-        this.videoIsOpen = !this.videoIsOpen;
-        },
-    }
+            this.videoIsOpen = !this.videoIsOpen;
+        }
+    },
 }
 </script>
 
@@ -94,10 +96,10 @@ export default {
 }
 .about-play {
     position: relative;
-    border-radius: 0px;
+    border-radius: 30px;
 }
 .about-play img {
-    border-radius: 0px;
+    border-radius: 30px;
 }
 .about-play .about-play-content {
     position: absolute;
@@ -105,7 +107,7 @@ export default {
     bottom: 0;
     left: 0;
     max-width: 470px;
-    background-color: #25252538;
+    background-color: #21252938;
     border-bottom-left-radius: 30px;
     border-top-right-radius: 70%;
     padding: 100px 40px 70px 25px;
@@ -119,9 +121,8 @@ export default {
     right: 30px;
     width: 91.7%;
     height: 90.1%;
-    background-color: transparent;
-    background-image: -webkit-linear-gradient(left,#260633,#ec615d);
-    border-bottom-left-radius: 0px;
+    background-color: var(--main-color);
+    border-bottom-left-radius: 30px;
     border-top-right-radius: 70%;
 }
 .about-play .about-play-content span {
@@ -142,8 +143,8 @@ export default {
 .about-play .about-play-content .play-on-area .play-on {
     width: 80px;
     height: 80px;
-    color: #f3615a;
-    background-color: #252525;
+    color: var(--main-color);
+    background-color: #fff;
     text-align: center;
     font-size: 40px;
     border-radius: 50px;
@@ -156,33 +157,27 @@ export default {
   margin: 0 auto ;
   padding: 0;
   position: relative;
-  text-align: center;
+  text-align: start;
 }
 .about-area .section-title span {
     margin-bottom: 8px;
     font-weight: 600;
     display: block;
-    color: #f3615a;
+    color: var(--main-color);
 }
 .about-area .section-title h2 {
-    font-weight: 400;
-    line-height: 41.6px;
-    letter-spacing: 1px;
-    text-transform: capitalize;
-    margin-bottom: 20px;
+    color: #212529;
+    font-size: 35px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 42px;
+    text-align: left;
+    margin-top: 10px;
+    margin-right: 0px;
+    margin-bottom: 15px;
+    margin-left: 0px;
 }
-.about-area .section-title .seprator {
-    align-self: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0px;
-    margin-bottom: 30px;
-    width: 100%;
-    max-width: 206px;
-    border-color: rgb(254, 208, 61);
-    border-top-width: 2px;
-    border-top-style: solid;
-}
+
 .about-area .section-title p {
     padding-top: 10px;
     margin-bottom: 0;
@@ -198,7 +193,7 @@ export default {
 }
 .about-area .about-content .about-list li {
     display: block;
-    color: #252525;
+    color: #212529;
     margin-bottom: 10px;
     font-weight: 500;
     -webkit-transition: .7s;
@@ -211,7 +206,7 @@ export default {
 }
 .about-area .about-content .about-list li svg {
     font-size: 26px;
-    color: #f3615a;
+    color: var(--main-color);
     position: absolute;
     left: 0;
     top: -2px;
@@ -223,10 +218,4 @@ export default {
     margin-top: 20px;
     margin-bottom: 0;
 }
-.about-area .heading-spacer::before {
-        left: 35%;
-    }
-    .about-area .heading-spacer::after {
-        right: 35%;
-    }
 </style>
