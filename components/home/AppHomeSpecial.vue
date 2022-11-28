@@ -10,118 +10,19 @@
 
             <swiper :options="swiperOption" class="owl-carousel">
 
-                <swiper-slide>
+                <swiper-slide v-for="member in team" :key="member.id">
                 <div class="item">
                     <div class="row m-0 justify-content-center">
                         <div class="col-auto user">
-                            <img src="https://the7.io/agency/wp-content/uploads/sites/43/2017/10/t007.jpg" alt="">
+                            <img :src="member.image" :alt="member.name">
                         </div>
                         <div class="col-12 text">
-                            <h3>Logan White</h3>
+                            <h3>{{member.name}}</h3>
                             <h4>
-                                Photographer
+                                {{member.job}}
                             </h4>
                             <p>
-                                Nullam volutpat mauris eu erat accumsan, sit amet lobortis odio finibus. Phasellus tempor leo sed est pretium, a malesuada quam lacinia.
-                            </p>
-                            <div href="#" class="social-owner">
-                                <a href="#">
-                                    <font-awesome-icon icon="fa-brands fa-behance" />
-                                </a>
-                                <a href="#">
-                                    <font-awesome-icon icon="fa-brands fa-instagram" />
-                                </a>
-                                <a href="#">
-                                    <font-awesome-icon icon="fa-brands fa-facebook-f" />
-                                </a>
-                                <a href="#">
-                                    <font-awesome-icon icon="fa-brands fa-twitter" />
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </swiper-slide>
-
-                <swiper-slide>
-                <div class="item">
-                    <div class="row m-0 justify-content-center">
-                        <div class="col-auto user">
-                            <img src="https://the7.io/agency/wp-content/uploads/sites/43/2017/10/t004.jpg" alt="">
-                        </div>
-                        <div class="col-12 text">
-                            <h3>Lucas Brown</h3>
-                            <h4>
-                                Programmer
-                            </h4>
-                            <p>
-                                Maecenas lorem ipsum dolor eget erat molestie, tincidunt est cursus, dapibus nulla. Nullam quis enim eu odio pretium aliquet. 
-                            </p>
-                            <div href="#" class="social-owner">
-                                <a href="#">
-                                    <font-awesome-icon icon="fa-brands fa-behance" />
-                                </a>
-                                <a href="#">
-                                    <font-awesome-icon icon="fa-brands fa-instagram" />
-                                </a>
-                                <a href="#">
-                                    <font-awesome-icon icon="fa-brands fa-facebook-f" />
-                                </a>
-                                <a href="#">
-                                    <font-awesome-icon icon="fa-brands fa-twitter" />
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </swiper-slide>
-
-                <swiper-slide>
-                <div class="item">
-                    <div class="row m-0 justify-content-center">
-                        <div class="col-auto user">
-                            <img src="https://the7.io/agency/wp-content/uploads/sites/43/2017/10/t003.jpg" alt="">
-                        </div>
-                        <div class="col-12 text">
-                            <h3>Olivia Walsh</h3>
-                            <h4>
-                                Marketing director
-                            </h4>
-                            <p>
-                                Vestibulum posuere felis vestibulum pharetra dapibus. Nam vitae sapien dapibus, condimentum ipsum non, porttitor purus.
-                            </p>
-                            <div href="#" class="social-owner">
-                                <a href="#">
-                                    <font-awesome-icon icon="fa-brands fa-behance" />
-                                </a>
-                                <a href="#">
-                                    <font-awesome-icon icon="fa-brands fa-instagram" />
-                                </a>
-                                <a href="#">
-                                    <font-awesome-icon icon="fa-brands fa-facebook-f" />
-                                </a>
-                                <a href="#">
-                                    <font-awesome-icon icon="fa-brands fa-twitter" />
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </swiper-slide>
-
-                <swiper-slide>
-                <div class="item">
-                    <div class="row m-0 justify-content-center">
-                        <div class="col-auto user">
-                            <img src="https://the7.io/agency/wp-content/uploads/sites/43/2017/10/t001.jpg" alt="">
-                        </div>
-                        <div class="col-12 text">
-                            <h3>Alex Green</h3>
-                            <h4>
-                                Account manager
-                            </h4>
-                            <p>
-                                Cras et diam ac – nunc urna magna, porttitor eu laoreet aliquam, pellentesque eu velit. Suspendisse potenti.
+                                {{member.description}}
                             </p>
                             <div href="#" class="social-owner">
                                 <a href="#">
@@ -151,6 +52,7 @@
 <script>
 export default {
     name: 'AppHomeSpecial',
+    props: ["team"],
     data() {
         return {
         swiperOption: {

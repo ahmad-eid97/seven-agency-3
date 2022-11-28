@@ -3,51 +3,25 @@
         <div class="row m-0">
             <div class="col-lg-6 text">
                 <div class="row m-0 ">
-                    <h1 class="text-center">WHY CHOOSE US</h1>
+                    <h1 class="text-center">{{whyUsSection.find(one => one.key === 'why_choose_us_title').value}}</h1>
                     <div class="heading-spacer">
                         <font-awesome-icon icon="fa-solid fa-angle-down" />
                     </div>
                     <p>
-                        Aliquam ex sem, iaculis at interdum non, bibendum non est. In mi sapien, consequat ut consequat eget, aliquet quis lectus. Fusce iaculis odio nec commodo vulputate from amet.
+                        {{whyUsSection.find(one => one.key === 'why_choose_us_description').value}}
                     </p>
                 </div>
                 <div class="row m-0">
                     <div class="items">
-                        <div class="item">
+                        <div v-for="item in whyUsSection.find(one => one.key === 'why_choose_us_list').value" :key="item" class="item">
                             <div class="row m-0">
                                 <div class="col-auto icon">
-                                    <font-awesome-icon icon="fa-solid fa-person" />
+                                    <font-awesome-icon :icon="item.icon" />
                                 </div>
                                 <div class="col item-text">
-                                    <h3>Individual Approach</h3>
+                                    <h3>{{item.title}}</h3>
                                     <p>
-                                        Gravida rutrum sit amet dolor from pellentesque vestibulum nibh diam, nec rhoncus dolor fringilla non.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="row m-0">
-                                <div class="col-auto icon">
-                                    <font-awesome-icon icon="fa-solid fa-gears" />
-                                </div>
-                                <div class="col item-text">
-                                    <h3>Modern Technologies</h3>
-                                    <p>
-                                        Gravida rutrum sit amet dolor from pellentesque vestibulum nibh diam, nec rhoncus dolor fringilla non.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="row m-0">
-                                <div class="col-auto icon">
-                                    <font-awesome-icon icon="fa-solid fa-boxes-stacked" />
-                                </div>
-                                <div class="col item-text">
-                                    <h3>Complex Sollutions</h3>
-                                    <p>
-                                        Gravida rutrum sit amet dolor from pellentesque vestibulum nibh diam, nec rhoncus dolor fringilla non.
+                                        {{item.description}}
                                     </p>
                                 </div>
                             </div>
@@ -55,8 +29,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 image">
-
+            <div class="col-lg-6 image" :style="{backgroundImage: whyUsSection.find(one => one.key === 'why_choose_us_image').value}">
+                <img :src="whyUsSection.find(one => one.key === 'why_choose_us_image').value" alt="">
             </div>
             
         </div>
@@ -66,6 +40,7 @@
 <script>
 export default {
     name: 'AppHomeWhy',
+    props: ["whyUsSection"],
     data() {
         return {
            
@@ -77,7 +52,7 @@ export default {
     }
 }
 </script>
-<style lang="css">
+<style lang="scss">
  .why {
      padding: 0;
  }
@@ -151,13 +126,16 @@ export default {
     text-transform: uppercase;
  }
  .why .image {
-    padding-top: 150px !important;
+    /* padding-top: 150px !important;
     padding-bottom: 150px !important;
     background-image: url(https://the7.io/agency/wp-content/uploads/sites/43/2017/10/bg001.jpg?id=631) !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
-    background-size: cover !important;
-
+    background-size: cover !important; */
+    img {
+        width: 100%;
+        height: 100%;
+    }
  }
  
  .why .item .icon {

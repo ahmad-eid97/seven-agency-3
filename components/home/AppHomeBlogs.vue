@@ -9,75 +9,25 @@
         <div class="row blogs-carousel">
 
             <swiper :options="swiperOption" class="owl-carousel">
-                <swiper-slide>
+                <swiper-slide v-for="blog in blogs" :key="blog.id">
                 <div class="item">
                     <div class="row m-0 justify-content-center">
-                        <div class="col-auto image">
-                            <img class="ing-fluid" src="https://the7.io/agency/wp-content/uploads/sites/43/2017/10/por012-768x512.jpg" alt="">
+                        <div class="image">
+                            <img class="img-fluid" :src="blog.image" :alt="blog.title">
                             <span class="tag">Events</span>
-                            <span class="date"><span class="month">Nov</span><span class="day">5</span><span class="year">2017</span></span>
+                            <span class="date"><span class="month">{{ $date(new Date(blog.publish_date), 'MMM') }}</span><span class="day">{{ $date(new Date(blog.publish_date), 'dd') }}</span><span class="year">{{ $date(new Date(blog.publish_date), 'yyyy') }}</span></span>
                         </div>
                         <div class="col-12 text">
-                            <h3>Phasellus nisl erat – dapibus a convallis vehicula eget sapien</h3>
+                            <h3>{{blog.title}}</h3>
                             
                             <p>
-                                Nullam volutpat mauris eu erat accumsan, sit amet lobortis odio finibus. Phasellus tempor leo sed est pretium, a malesuada quam lacinia.
+                                {{blog.description}}
                             </p>
                             <div href="#" class="btns">
-                                <a href="#" class="btn">
+                                <nuxt-link :to="`/blog/${blog.id}`" class="btn">
                                     Read article
                                     <font-awesome-icon icon="fa-solid fa-caret-right" />
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </swiper-slide>
-
-                <swiper-slide>
-                <div class="item">
-                    <div class="row m-0 justify-content-center">
-                        <div class="col-auto image">
-                            <img class="ing-fluid" src="https://the7.io/agency/wp-content/uploads/sites/43/2017/10/bg003-768x512.jpg" alt="">
-                            <span class="tag">Events</span>
-                            <span class="date"><span class="month">Nov</span><span class="day">5</span><span class="year">2017</span></span>
-                        </div>
-                        <div class="col-12 text">
-                            <h3>Phasellus nisl erat – dapibus a convallis vehicula eget sapien</h3>
-                            
-                            <p>
-                                Nullam volutpat mauris eu erat accumsan, sit amet lobortis odio finibus. Phasellus tempor leo sed est pretium, a malesuada quam lacinia.
-                            </p>
-                            <div href="#" class="btns">
-                                <a href="#" class="btn">
-                                    Read article
-                                    <font-awesome-icon icon="fa-solid fa-caret-right" />
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </swiper-slide>
-
-                <swiper-slide>
-                <div class="item">
-                    <div class="row m-0 justify-content-center">
-                        <div class="col-auto image">
-                            <img class="ing-fluid" src="https://the7.io/agency/wp-content/uploads/sites/43/2017/10/bg002-768x512.jpg" alt="">
-                            <span class="tag">Events</span>
-                            <span class="date"><span class="month">Nov</span><span class="day">5</span><span class="year">2017</span></span>
-                        </div>
-                        <div class="col-12 text">
-                            <h3>Phasellus nisl erat – dapibus a convallis vehicula eget sapien</h3>
-                            
-                            <p>
-                                Nullam volutpat mauris eu erat accumsan, sit amet lobortis odio finibus. Phasellus tempor leo sed est pretium, a malesuada quam lacinia.
-                            </p>
-                            <div href="#" class="btns">
-                                <a href="#" class="btn">
-                                    Read article
-                                    <font-awesome-icon icon="fa-solid fa-caret-right" />
-                                </a>
+                                </nuxt-link>
                             </div>
                         </div>
                     </div>
@@ -92,6 +42,7 @@
 <script>
 export default {
     name: 'AppHomeblogs',
+    props: ["blogs"],
     data() {
         return {
         swiperOption: {
@@ -192,6 +143,8 @@ export default {
  }
  .blogs .item .image img{
      transition: all 2s linear;
+     height: 300px;
+     width: 100% !important;
  }
  .blogs .item .image:hover img{
      transform: scale(1.3);

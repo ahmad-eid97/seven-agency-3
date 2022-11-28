@@ -13,57 +13,19 @@
                 <div class="row what-carousel">
 
                     <swiper :options="swiperOption" class="owl-carousel">
-                        <swiper-slide>
+                        <swiper-slide v-for="item in testimonials" :key="item.id">
                         <div class="item">
                             <div class="row m-0 justify-content-center">
                                 <div class="col-auto user">
-                                    <img src="https://the7.io/agency/wp-content/uploads/sites/43/2017/10/t002-90x90.jpg" alt="">
+                                    <img :src="item.image" :alt="item.title">
                                 </div>
                                 <div class="col-12 text">
-                                    <h3>Richard Brown</h3>
+                                    <h3>{{item.name}}</h3>
                                     <h4>
-                                        Business owner - Seven commerce
+                                        {{item.job}}
                                     </h4>
                                     <p>
-                                        I want to say lorem ipsum dolor amet! Proin nisl risus, tincidunt sed rutrum nec, imperdiet ac enim. Morbi faucibusd ac – lorem glavrida liquam lorem ipsum dolor erat volutpat.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        </swiper-slide>
-
-                        <swiper-slide>
-                        <div class="item">
-                            <div class="row m-0 justify-content-center">
-                                <div class="col-auto user">
-                                    <img src="https://the7.io/agency/wp-content/uploads/sites/43/2017/10/t003-90x90.jpg" alt="">
-                                </div>
-                                <div class="col-12 text">
-                                    <h3>Anna Wildfire</h3>
-                                    <h4>
-                                        Creative director - Seven digital
-                                    </h4>
-                                    <p>
-                                        Gravida rutrum sit amet dolor from pellentesque vestibulum nibh diam, nec rhoncus dolor fringilla lorem ipsim dolor non! Vestibulum nibh diam, nec rhoncus dolor. Thanx!
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        </swiper-slide>
-
-                        <swiper-slide>
-                        <div class="item">
-                            <div class="row m-0 justify-content-center">
-                                <div class="col-auto user">
-                                    <img src="https://the7.io/agency/wp-content/uploads/sites/43/2017/10/t001-90x90.jpg" alt="">
-                                </div>
-                                <div class="col-12 text">
-                                    <h3>Alexander Smith</h3>
-                                    <h4>
-                                        Marketing director - Seven arts
-                                    </h4>
-                                    <p>
-                                        I want to say lorem ipsum dolor amet! Proin nisl risus, tincidunt sed rutrum nec, imperdiet ac enim. Morbi faucibusd ac – lorem glavrida liquam lorem ipsum dolor erat volutpat.
+                                        {{item.description}}
                                     </p>
                                 </div>
                             </div>
@@ -73,23 +35,8 @@
 
                 </div>
                 <div class="row brands justify-content-between">
-                    <div class="brand">
-                        <img class="img-fluid" src="https://the7.io/agency/wp-content/uploads/sites/43/2017/10/4-logo-18-400x300.png" alt="">
-                    </div>
-                    <div class="brand">
-                        <img class="img-fluid" src="https://the7.io/agency/wp-content/uploads/sites/43/2017/10/4-logo-09-400x300.png" alt="">
-                    </div>
-                    <div class="brand">
-                        <img class="img-fluid" src="https://the7.io/agency/wp-content/uploads/sites/43/2017/10/4-logo-12-400x300.png" alt="">
-                    </div>
-                    <div class="brand">
-                        <img class="img-fluid" src="https://the7.io/agency/wp-content/uploads/sites/43/2017/10/4-logo-23-400x300.png" alt="">
-                    </div>
-                    <div class="brand">
-                        <img class="img-fluid" src="https://the7.io/agency/wp-content/uploads/sites/43/2017/10/4-logo-19-400x300.png" alt="">
-                    </div>
-                    <div class="brand">
-                        <img class="img-fluid" src="https://the7.io/agency/wp-content/uploads/sites/43/2017/10/4-logo-14-400x300.png" alt="">
+                    <div v-for="partner in partners" :key="partner" class="brand">
+                        <img class="img-fluid" :src="partner.image" :alt="partner.title">
                     </div>
                 </div>
             </div>
@@ -100,6 +47,7 @@
 <script>
 export default {
     name: 'AppHomeWhat',
+    props: ["testimonials", "partners"],
     data() {
         return {
             swiperOption: {
@@ -227,5 +175,9 @@ export default {
      width: 90px;
      height: 67.5px;
      padding: 0;
+ }
+ .what .brands img {
+     height: 60px;
+     width: auto;
  }
 </style>

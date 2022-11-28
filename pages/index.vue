@@ -2,16 +2,16 @@
   <div class="home">
     <app-home-intro></app-home-intro>
     <app-home-who></app-home-who>
-    <app-home-why></app-home-why>
+    <app-home-why :whyUsSection="whyUsSection"></app-home-why>
     <app-home-banner></app-home-banner>
-    <app-home-what></app-home-what>
-    <app-home-services></app-home-services>
+    <app-home-what :testimonials="testimonials" :partners="partners"></app-home-what>
+    <app-home-services :services="services"></app-home-services>
     <app-home-projects></app-home-projects>
     <app-home-banner-phone></app-home-banner-phone>
     <app-home-owner></app-home-owner>
-    <app-home-special></app-home-special>
+    <app-home-special :team="team"></app-home-special>
     <app-home-process></app-home-process>
-    <app-home-blogs></app-home-blogs>
+    <app-home-blogs :blogs="blogs"></app-home-blogs>
     <app-home-contact></app-home-contact>
     <app-home-message></app-home-message>
     <app-home-banner-bottom></app-home-banner-bottom>
@@ -37,6 +37,32 @@ import AppHomeBannerBottom from '../components/home/AppHomeBannerBottom.vue'
 
 export default {
   name: 'Home',
+  async asyncData({ $axios, app }) {
+    const whyUsSection = await $axios.get('/sections/why_choose_us', {
+      headers: {
+        "Accept-Language": app.i18n.locale
+      }
+    });
+
+    const testimonials = await $axios.get('/testimonials');
+
+    const partners = await $axios.get('/partners');
+
+    const services = await $axios.get('/services');
+
+    const team = await $axios.get('/teams');
+
+    const blogs = await $axios.get('/blogs?latest=1');
+
+    return {
+      whyUsSection: whyUsSection.data.data,
+      testimonials: testimonials.data.data.testimonials,
+      partners: partners.data.data.partners,
+      services: services.data.data.services,
+      team: team.data.data.teams,
+      blogs: blogs.data.data.blogs,
+    }
+  },
   components: {
     AppHomeIntro,
     AppHomeWho,

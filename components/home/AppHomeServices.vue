@@ -5,85 +5,15 @@
             <div class="heading-spacer">
                 <font-awesome-icon icon="fa-solid fa-angle-down" />
             </div>
-            <div class="col-md-6 col-lg-4 mb-4">
+            <div v-for="service in services.slice(0, 6)" :key="service.id" class="col-md-6 col-lg-4 mb-4">
                 <div class="service">
                     <div class="row justify-content-center m-0">
                         <div class="col-auto icon">
-                            <font-awesome-icon icon="fa-solid fa-trophy" />
+                            <font-awesome-icon :icon="service.icon" />
                         </div>
-                        <h3>Web Design</h3>
+                        <h3>{{service.title}}</h3>
                         <p>
-                            Proin nisl risus, tincidunt sed rutrum nec, imperdiet ac enim. Morbi faucibusd ac – lorem glavrida liquam erat volutpat.
-                        </p>
-                        <hr>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="service alt">
-                    <div class="row justify-content-center m-0">
-                        <div class="col-auto icon">
-                            <font-awesome-icon icon="fa-solid fa-basket-shopping" />
-                        </div>
-                        <h3>Ecommerce Sollutions</h3>
-                        <p>
-                            From amet glavrida roin nisl risus lore ipsum, tincidunt sed rutrum nec, imperdiet ac enim. Morbi faucibusd ac – lorem glavrida liquam erat volutpat.
-                        </p>
-                        <hr>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="service">
-                    <div class="row justify-content-center m-0">
-                        <div class="col-auto icon">
-                            <font-awesome-icon icon="fa-solid fa-envelope" />
-                        </div>
-                        <h3>Email Marketing</h3>
-                        <p>
-                            From amet glavrida roin nisl risus lore ipsum, tincidunt sed rutrum nec, imperdiet ac enim. Morbi faucibusd ac – lorem glavrida liquam erat volutpat.
-                        </p>
-                        <hr>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="service alt">
-                    <div class="row justify-content-center m-0">
-                        <div class="col-auto icon">
-                            <font-awesome-icon icon="fa-solid fa-shield-halved" />
-                        </div>
-                        <h3>Security Services</h3>
-                        <p>
-                            From amet glavrida roin nisl risus lore ipsum, tincidunt sed rutrum nec, imperdiet ac enim. Morbi faucibusd ac – lorem glavrida liquam erat volutpat.
-                        </p>
-                        <hr>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="service">
-                    <div class="row justify-content-center m-0">
-                        <div class="col-auto icon">
-                            <font-awesome-icon icon="fa-solid fa-rectangle-list" />
-                        </div>
-                        <h3>Programming</h3>
-                        <p>
-                            From amet glavrida roin nisl risus lore ipsum, tincidunt sed rutrum nec, imperdiet ac enim. Morbi faucibusd ac – lorem glavrida liquam erat volutpat.
-                        </p>
-                        <hr>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="service alt">
-                    <div class="row justify-content-center m-0">
-                        <div class="col-auto icon">
-                            <font-awesome-icon icon="fa-solid fa-chart-column" />
-                        </div>
-                        <h3>SEO</h3>
-                        <p>
-                            From amet glavrida roin nisl risus lore ipsum, tincidunt sed rutrum nec, imperdiet ac enim. Morbi faucibusd ac – lorem glavrida liquam erat volutpat.
+                            {{service.description.substring(0, 300) + '...'}}
                         </p>
                         <hr>
                     </div>
@@ -98,6 +28,7 @@
 <script>
 export default {
     name: 'AppHomeServices',
+    props: ["services"],
     data() {
         return {
            
