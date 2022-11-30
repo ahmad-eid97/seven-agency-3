@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <app-home-intro></app-home-intro>
-    <app-home-who></app-home-who>
+    <app-home-who :features="features"></app-home-who>
     <app-home-why :whyUsSection="whyUsSection"></app-home-why>
     <app-home-banner></app-home-banner>
     <app-home-what :testimonials="testimonials" :partners="partners"></app-home-what>
@@ -44,6 +44,8 @@ export default {
       }
     });
 
+    const features = await $axios.get('/sections/features');
+
     const testimonials = await $axios.get('/testimonials');
 
     const partners = await $axios.get('/partners');
@@ -56,6 +58,7 @@ export default {
 
     return {
       whyUsSection: whyUsSection.data.data,
+      features: features.data.data,
       testimonials: testimonials.data.data.testimonials,
       partners: partners.data.data.partners,
       services: services.data.data.services,

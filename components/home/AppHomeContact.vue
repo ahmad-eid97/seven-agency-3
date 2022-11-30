@@ -17,7 +17,7 @@
                                 </div>
                                 <div class="col item-text">
                                     <h3>
-                                        SoHo 94 Broadway St New York, NY 1001
+                                        {{$store.state.websiteSettings.find(one => one.key === 'contact_address').value}}
                                     </h3>
                                 </div>
                             </div>
@@ -28,7 +28,7 @@
                                     <font-awesome-icon icon="fa-solid fa-phone" />
                                 </div>
                                 <div class="col item-text">
-                                    <h3>001 234 56 78</h3>
+                                    <h3>{{$store.state.websiteSettings.find(one => one.key === 'contact_phone').value}}</h3>
                                 </div>
                             </div>
                         </div>
@@ -38,11 +38,11 @@
                                     <font-awesome-icon icon="fa-solid fa-envelope" />
                                 </div>
                                 <div class="col item-text">
-                                    <h3>hello@dream-theme.com</h3>
+                                    <h3>{{$store.state.websiteSettings.find(one => one.key === 'email').value}}</h3>
                                 </div>
                             </div>
                         </div>
-                        <div class="item">
+                        <!-- <div class="item">
                             <div class="row m-0 align-items-center">
                                 <div class="col-auto icon">
                                     <font-awesome-icon icon="fa-solid fa-clock" />
@@ -51,7 +51,7 @@
                                     <h3>Mon. - Fri. 10:00 - 19:00</h3>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

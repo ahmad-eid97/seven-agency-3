@@ -33,80 +33,16 @@
         <div class="row who-carousel">
 
             <swiper :options="swiperOption" class="owl-carousel">
-                <swiper-slide>
+                <swiper-slide v-for="feature in features.find(one => one.key === 'features_text_list').value" :key="feature">
                 <div class="item">
                     <div class="row m-0">
                         <div class="col-auto icon">
-                            <font-awesome-icon icon="fa-solid fa-trophy" />
+                            <font-awesome-icon :icon="feature.icon" />
                         </div>
                         <div class="col text">
-                            <h3>Premium Quality</h3>
+                            <h3>{{feature.title}}</h3>
                             <p>
-                                Gravida rutrum sit amet – from pellentesque vestibulum nibh diam, nec rhoncus dolor fringilla non. Maecenas ut libero sapien amet.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                </swiper-slide>
-
-                <swiper-slide>
-                <div class="item">
-                    <div class="row m-0">
-                        <div class="col-auto icon">
-                            <font-awesome-icon icon="fa-solid fa-rocket" />
-                        </div>
-                        <div class="col text">
-                            <h3>Innovative Solutions</h3>
-                            <p>
-                                Lorem gravida rutrum sit amet id turpis. Pellentesque vestibulum nibh diam, nec rhoncus dolor fringilla non!
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                </swiper-slide>
-
-                <swiper-slide>
-                <div class="item">
-                    <div class="row m-0">
-                        <div class="col-auto icon">
-                            <font-awesome-icon icon="fa-solid fa-comments" />
-                        </div>
-                        <div class="col text">
-                            <h3>Free Consultations</h3>
-                            <p>
-                                Pellentesque sagittis – sed ac commodo metus. Proin finibus vulputate felis quis iaculis. Hurry up!
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                </swiper-slide>
-
-                <swiper-slide>
-                <div class="item">
-                    <div class="row m-0">
-                        <div class="col-auto icon">
-                            <font-awesome-icon icon="fa-solid fa-sitemap" />
-                        </div>
-                        <div class="col text">
-                            <h3>Multiple Strategies</h3>
-                            <p>
-                                Gravida rutrum sit amet id turpis. Pellentesque vestibulum nibh diam, nec rhoncus dolor fringilla non. Maecenas ut libero sapien.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                </swiper-slide>
-
-                <swiper-slide>
-                <div class="item">
-                    <div class="row m-0">
-                        <div class="col-auto icon">
-                            <font-awesome-icon icon="fa-solid fa-users" />
-                        </div>
-                        <div class="col text">
-                            <h3>Experienced Team</h3>
-                            <p>
-                                Duis eleifend nisl in libero pellentesque sagittis. Sed ac commodo metus. Proin finibus vulputate felis quis iaculis.
+                                {{feature.description}}
                             </p>
                         </div>
                     </div>
@@ -121,6 +57,7 @@
 <script>
 export default {
     name: 'AppHomeWho',
+    props: ["features"],
     data() {
         return {
         swiperOption: {

@@ -9,27 +9,27 @@
         <div class="row justify-content-center">
             <div class="col-auto  text-center">
                 <div class="social-bottom">
-                    <a href="#">
-                        <font-awesome-icon icon="fa-brands fa-twitter" />
+                    <a :href="`https://${$store.state.footerData.youtube}`" target="_blank"> 
+                        <font-awesome-icon icon="fa-brands fa-youtube" />
                     </a>
                     <p>
-                        Twitter
+                        Youtube
                     </p>
                 </div>
             </div>
             <div class="col-auto  text-center">
                 <div class="social-bottom">
-                    <a href="#">
-                        <font-awesome-icon icon="fa-brands fa-pinterest-p" />
+                    <a :href="`https://${$store.state.footerData.instagram}`" target="_blank">
+                        <font-awesome-icon icon="fa-brands fa-instagram" />
                     </a>
                     <p>
-                        Pinterest
+                        Instagram
                     </p>
                 </div>
             </div>
             <div class="col-auto  text-center">
                 <div class="social-bottom">
-                    <a href="#">
+                    <a :href="`https://${$store.state.footerData.facebook}`" target="_blank">
                         <font-awesome-icon icon="fa-brands fa-facebook-f" />
                     </a>
                     <p>
@@ -39,11 +39,11 @@
             </div>
             <div class="col-auto  text-center">
                 <div class="social-bottom">
-                    <a href="#">
-                        <font-awesome-icon icon="fa-brands fa-behance" />
+                    <a :href="`https://${$store.state.footerData.linkedin}`" target="_blank">
+                        <font-awesome-icon icon="fa-brands fa-linkedin-in" />
                     </a>
                     <p>
-                        Behance
+                        Linkedin
                     </p>
                 </div>
             </div>
