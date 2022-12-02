@@ -28,7 +28,7 @@
                                     <font-awesome-icon icon="fa-solid fa-phone" />
                                 </div>
                                 <div class="col item-text">
-                                    <h3>{{$store.state.websiteSettings.find(one => one.key === 'contact_phone').value}}</h3>
+                                    <h3>{{$store.state.websiteSettings.find(one => one.key === 'contact_phone').plain_value}}</h3>
                                 </div>
                             </div>
                         </div>

@@ -7,7 +7,7 @@
            <div class="col-auto">
                <p>
                    <font-awesome-icon icon="fa-solid fa-square-phone" />
-                    {{$store.state.websiteSettings.find(one => one.key === 'contact_phone').value}}
+                    {{$store.state.websiteSettings.find(one => one.key === 'contact_phone').plain_value}}
                </p>
            </div>
         </div>
