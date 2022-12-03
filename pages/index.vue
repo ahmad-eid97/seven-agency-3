@@ -3,7 +3,7 @@
     <app-home-intro></app-home-intro>
     <app-home-who :whoWeAre="whoWeAre" :features="features"></app-home-who>
     <app-home-why :whyUsSection="whyUsSection"></app-home-why>
-    <app-home-banner></app-home-banner>
+    <app-home-banner :bannerTop="bannerTop"></app-home-banner>
     <app-home-what
       :testimonials="testimonials"
       :partners="partners"
@@ -53,6 +53,12 @@ export default {
       },
     });
 
+    const bannerTop = await $axios.get("/sections/banner-top", {
+      headers: {
+        "Accept-Language": app.i18n.locale,
+      },
+    });
+
     const whoWeAre = await $axios.get("/sections/who_we_are", {
       headers: {
         "Accept-Language": app.i18n.locale,
@@ -79,6 +85,7 @@ export default {
 
     return {
       whyUsSection: whyUsSection.data.data,
+      bannerTop: bannerTop.data.data,
       features: features.data.data,
       whoWeAre: whoWeAre.data.data,
       testimonials: testimonials.data.data.testimonials,
