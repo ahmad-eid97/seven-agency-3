@@ -5,7 +5,7 @@
         {{ process.find((one) => one.key === "process_title").value }}
       </h2>
       <div class="heading-spacer">
-        <font-awesome-icon icon="fa-solid fa-angle-down" />
+        <i class="fa-solid fa-angle-down"></i>
       </div>
       <div class="icons">
         <ul class="icon_list top">
@@ -19,7 +19,7 @@
             >
               <li class="icon_list_item">
                 <div class="icon_list_icon">
-                  <font-awesome-icon :icon="item.icon" />
+                  <i :class="item.icon"></i>
                 </div>
                 <h3>{{ item.number }}.</h3>
                 <div class="icon_list_connector"></div>
@@ -57,7 +57,7 @@
             class="icon_list_item"
           >
             <div class="icon_list_icon">
-              <font-awesome-icon :icon="item.icon" />
+              <i :class="item.icon"></i>
             </div>
 
             <h3>{{ item.number }}.</h3>
@@ -136,12 +136,11 @@ export default {
 }
 .process .heading-spacer {
   margin-bottom: 60px;
-  height: 21px;
   position: relative;
   overflow: hidden;
   text-align: center;
 }
-.process .heading-spacer svg {
+.process .heading-spacer i {
   color: var(--main-color);
   font-size: 26px;
 }

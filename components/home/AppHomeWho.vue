@@ -5,7 +5,7 @@
         {{ whoWeAre.find((one) => one.key === "who_we_are_title").value }}
       </h1>
       <div class="heading-spacer">
-        <font-awesome-icon icon="fa-solid fa-angle-down" />
+        <i class="fa-solid fa-angle-down"></i>
       </div>
     </div>
     <div class="row text">
@@ -47,7 +47,7 @@
           <div class="item">
             <div class="row m-0">
               <div class="col-auto icon">
-                <font-awesome-icon :icon="feature.icon" />
+                <i :class="feature.icon"></i>
               </div>
               <div class="col text">
                 <h3>{{ feature.title }}</h3>
@@ -117,12 +117,11 @@ export default {
 }
 .who .heading-spacer {
   margin-bottom: 60px;
-  height: 21px;
   position: relative;
   overflow: hidden;
   text-align: center;
 }
-.who .heading-spacer svg {
+.who .heading-spacer i {
   color: var(--main-color);
   font-size: 26px;
 }

@@ -5,7 +5,7 @@
         {{ bannerTop.find((one) => one.key === "banner-top_title").value }}
       </h2>
       <div class="heading-spacer">
-        <font-awesome-icon icon="fa-solid fa-angle-down" />
+        <i class="fa-solid fa-angle-down"></i>
       </div>
       <h3>
         {{
@@ -52,12 +52,11 @@ export default {
 }
 .banner .heading-spacer {
   margin-bottom: 60px;
-  height: 21px;
   position: relative;
   overflow: hidden;
   text-align: center;
 }
-.banner .heading-spacer svg {
+.banner .heading-spacer i {
   color: var(--main-color);
   font-size: 26px;
 }

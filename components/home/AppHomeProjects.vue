@@ -3,7 +3,7 @@
     <div class="row m-0 justify-content-center">
       <h1 class="text-center">CHECK OUT OUR PROJECTS!</h1>
       <div class="heading-spacer">
-        <font-awesome-icon icon="fa-solid fa-angle-down" />
+        <i class="fa-solid fa-angle-down"></i>
       </div>
     </div>
     <div class="row">
@@ -28,15 +28,13 @@
               <div class="rollover">
                 <div class="rollover-content">
                   <a class="rollover-link" href="#">
-                    <font-awesome-icon
-                      icon="fa-solid fa-arrow-up-right-from-square"
-                    />
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
                   </a>
                   <a class="rollover-link" href="#">
-                    <font-awesome-icon icon="fa-solid fa-expand" />
+                    <i class="fa-solid fa-expand"></i>
                   </a>
                   <a class="rollover-link" href="#">
-                    <font-awesome-icon icon="fa-solid fa-plus" />
+                    <i class="fa-solid fa-plus"></i>
                   </a>
                 </div>
               </div>
@@ -93,12 +91,11 @@ export default {
 }
 .projects .heading-spacer {
   margin-bottom: 60px;
-  height: 21px;
   position: relative;
   overflow: hidden;
   text-align: center;
 }
-.projects .heading-spacer svg {
+.projects .heading-spacer i {
   color: var(--main-color);
   font-size: 26px;
 }

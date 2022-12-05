@@ -2,18 +2,36 @@
   <section class="counter-area">
     <div class="container">
       <div class="section-title text-center">
-        <span class="sp-color2">{{counterSection.find(one => one.key === 'counter_success_title').value}}</span>
-        <h2>{{counterSection.find(one => one.key === 'counter_success_sub_title').value}}</h2>
+        <span class="sp-color2">{{
+          counterSection.find((one) => one.key === "counter_success_title")
+            .value
+        }}</span>
+        <h2>
+          {{
+            counterSection.find(
+              (one) => one.key === "counter_success_sub_title"
+            ).value
+          }}
+        </h2>
 
         <p>
-          {{counterSection.find(one => one.key === 'counter_success_description').value}}
+          {{
+            counterSection.find(
+              (one) => one.key === "counter_success_description"
+            ).value
+          }}
         </p>
       </div>
       <div class="row pt-45 justify-content-center">
-
-        <div v-for="item in counterSection.find(one => one.key === 'counter_success_list').value" :key="item" class="col-sm-6 col-lg-3 col-md-3">
+        <div
+          v-for="item in counterSection.find(
+            (one) => one.key === 'counter_success_list'
+          ).value"
+          :key="item"
+          class="col-sm-6 col-lg-3 col-md-3"
+        >
           <div class="counter-another-content">
-            <font-awesome-icon :icon="item.icon" />
+            <i :class="item.icon"></i>
             <div>
               <h3>
                 <VueJsCounter
@@ -24,7 +42,7 @@
                 ></VueJsCounter
                 >+
               </h3>
-              <span>{{item.title}}</span>
+              <span>{{ item.title }}</span>
             </div>
           </div>
         </div>
@@ -44,12 +62,16 @@ export default {
   data() {
     return {};
   },
-  methods: {}
+  methods: {},
 };
 </script>
 <style lang="scss">
+.counter-area {
+  padding: 100px 0;
+}
 .counter-area .section-title {
   margin: 0;
+  text-align: center !important;
 }
 .counter-area .section-title span {
   margin-bottom: 8px;
@@ -112,7 +134,7 @@ export default {
   margin-bottom: 0;
   font-weight: 600;
 }
-.counter-another-content svg {
+.counter-another-content i {
   position: absolute;
   line-height: 1;
   font-size: 60px;
@@ -128,7 +150,7 @@ export default {
   .counter-another-content h3 span {
     font-size: 25px;
   }
-  .counter-another-content svg {
+  .counter-another-content i {
     font-size: 50px;
     position: relative;
   }
@@ -145,7 +167,7 @@ export default {
   .counter-another-content h3 span {
     font-size: 27px;
   }
-  .counter-another-content svg {
+  .counter-another-content i {
     font-size: 50px;
     position: relative;
   }
@@ -162,7 +184,7 @@ export default {
   .counter-another-content h3 span {
     font-size: 20px;
   }
-  .counter-another-content svg {
+  .counter-another-content i {
     font-size: 40px;
     position: relative;
   }
