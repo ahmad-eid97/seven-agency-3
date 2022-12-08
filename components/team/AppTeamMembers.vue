@@ -8,7 +8,7 @@
           <i class="fa-solid fa-angle-down"></i>
         </div>
       </div>
-      <div class="row pt-45">
+      <div class="row pt-45" v-if="team.teams.length >= 1">
         <div
           v-for="member in team.teams"
           :key="member.id"

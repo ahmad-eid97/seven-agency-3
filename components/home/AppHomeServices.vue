@@ -1,6 +1,9 @@
 <template>
   <section class="services">
-    <div class="row m-0 justify-content-center content">
+    <div
+      class="row m-0 justify-content-center content"
+      v-if="services.length >= 1"
+    >
       <h2 class="text-center">OUR SERVICES</h2>
       <div class="heading-spacer">
         <i class="fa-solid fa-angle-down"></i>

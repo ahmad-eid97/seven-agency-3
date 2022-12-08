@@ -37,7 +37,11 @@
       </div>
     </div>
     <div class="row who-carousel">
-      <swiper :options="swiperOption" class="owl-carousel">
+      <swiper
+        :options="swiperOption"
+        class="owl-carousel"
+        v-if="features.find((one) => one.key === 'features_text_list').value"
+      >
         <swiper-slide
           v-for="feature in features.find(
             (one) => one.key === 'features_text_list'

@@ -8,7 +8,7 @@
           <i class="fa-solid fa-angle-down"></i>
         </div>
       </div>
-      <div class="row pt-45">
+      <div class="row pt-45" v-if="team.teams.length >= 1">
         <div
           v-for="member in team.teams"
           :key="member.id"
@@ -104,6 +104,14 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   justify-content: center;
+}
+.thumb img {
+  height: 250px;
+  width: 100%;
+}
+.content {
+  text-align: center !important;
+  padding: 20px;
 }
 .team-area .flip-box .flip-box-front img {
   border-radius: 10px;

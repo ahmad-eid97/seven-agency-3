@@ -1,23 +1,22 @@
 <template>
-    <section class="about-partners">
-    <swiper :options="swiperOption" class="owl-carousel">
+  <section class="about-partners">
+    <swiper
+      :options="swiperOption"
+      class="owl-carousel"
+      v-if="partners.partners.length >= 1"
+    >
       <swiper-slide v-for="partner in partners.partners" :key="partner.id">
         <div class="item">
-          <img
-            class="imgo"
-            :src="partner.image"
-            width="150"
-            height="150"
-          />
+          <img class="imgo" :src="partner.image" width="150" height="150" />
         </div>
       </swiper-slide>
     </swiper>
-    </section>
+  </section>
 </template>
 
 <script>
 export default {
-    name: 'AppTestimonialsParteners',
+  name: "AppTestimonialsParteners",
   data() {
     return {
       swiperOption: {
@@ -52,43 +51,42 @@ export default {
       },
     };
   },
-  props: ["partners"]
-}
+  props: ["partners"],
+};
 </script>
 <style>
-    .about-partners {
-        padding: 45px 100px 0;
-        background-color: transparent;
-        background-image: -webkit-linear-gradient(left,#260633,#ec615d);
-    }
-    .about-partners::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
-        background-position: center center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-image: url(/assets/images/brand-bg.png);
-    }
-    .about-partners .owl-carousel {
-        margin-bottom: 40px;
-    }
-    .about-partners .owl-carousel .item  {
-        text-align: center;
-    }
-    .about-partners .owl-carousel .item img {
-        max-height: 115px;
-        width: auto;
-        display: inline;
-        max-width: 100%;
-        height: auto;
-    }
-    .about-partners .owl-carousel .owl-nav.disabled {
-        display: none !important;
-    }
-
+.about-partners {
+  padding: 45px 100px 0;
+  background-color: transparent;
+  background-image: -webkit-linear-gradient(left, #260633, #ec615d);
+}
+.about-partners::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(/assets/images/brand-bg.png);
+}
+.about-partners .owl-carousel {
+  margin-bottom: 40px;
+}
+.about-partners .owl-carousel .item {
+  text-align: center;
+}
+.about-partners .owl-carousel .item img {
+  max-height: 115px;
+  width: auto;
+  display: inline;
+  max-width: 100%;
+  height: auto;
+}
+.about-partners .owl-carousel .owl-nav.disabled {
+  display: none !important;
+}
 </style>

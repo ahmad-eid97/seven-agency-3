@@ -7,7 +7,11 @@
       </div>
     </div>
     <div class="row blogs-carousel">
-      <swiper :options="swiperOption" class="owl-carousel">
+      <swiper
+        :options="swiperOption"
+        class="owl-carousel"
+        v-if="blogs.length >= 1"
+      >
         <swiper-slide v-for="blog in blogs" :key="blog.id">
           <div class="item">
             <div class="row m-0 justify-content-center">

@@ -10,7 +10,11 @@
           </div>
         </div>
         <div class="row what-carousel">
-          <swiper :options="swiperOption" class="owl-carousel">
+          <swiper
+            :options="swiperOption"
+            class="owl-carousel"
+            v-if="testimonials.length >= 1"
+          >
             <swiper-slide v-for="item in testimonials" :key="item.id">
               <div class="item">
                 <div class="row m-0 justify-content-center">
@@ -31,7 +35,10 @@
             </swiper-slide>
           </swiper>
         </div>
-        <div class="row brands justify-content-between">
+        <div
+          class="row brands justify-content-between"
+          v-if="partners.length >= 1"
+        >
           <div v-for="partner in partners" :key="partner" class="brand">
             <img class="img-fluid" :src="partner.image" :alt="partner.title" />
           </div>

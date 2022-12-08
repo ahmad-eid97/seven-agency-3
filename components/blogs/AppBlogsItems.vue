@@ -8,12 +8,12 @@
           <i class="fa-solid fa-angle-down"></i>
         </div>
       </div>
-      <div class="row pt-45">
+      <div class="row pt-45" v-if="blogs.blogs.length >= 1">
         <div
           v-for="blog in blogs.blogs"
           :key="blog.id"
           class="col-lg-4 col-md-6"
-          @click="$router.push(`/blog/${blog.id}`)"
+          @click="$router.push(localePath(`/blog/${blog.id}`))"
         >
           <div class="blog-card">
             <div class="blog-img">
@@ -93,6 +93,7 @@ export default {
   transition: 0.9s;
   border: 3px solid #f3615a;
   transform: translateY(0px);
+  height: 100%;
 }
 .blog-card:hover {
   transform: translateY(-15px);

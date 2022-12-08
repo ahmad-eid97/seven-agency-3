@@ -9,7 +9,10 @@
       </div>
       <div class="icons">
         <ul class="icon_list top">
-          <div class="row justify-content-center">
+          <div
+            class="row justify-content-center"
+            v-if="process.find((one) => one.key === 'process_list').value"
+          >
             <div
               v-for="item in process
                 .find((one) => one.key === 'process_list')
@@ -28,7 +31,10 @@
           </div>
         </ul>
       </div>
-      <div class="row m-0 justify-content-center">
+      <div
+        class="row m-0 justify-content-center"
+        v-if="process.find((one) => one.key === 'process_list').value"
+      >
         <div
           v-for="item in process
             .find((one) => one.key === 'process_list')
@@ -43,7 +49,10 @@
         </div>
       </div>
       <div class="icons">
-        <ul class="icon_list top">
+        <ul
+          class="icon_list top"
+          v-if="process.find((one) => one.key === 'process_list').value"
+        >
           <div class="row"></div>
 
           <li
@@ -66,7 +75,10 @@
           </li>
         </ul>
       </div>
-      <div class="row m-0 justify-content-center">
+      <div
+        class="row m-0 justify-content-center"
+        v-if="process.find((one) => one.key === 'process_list').value"
+      >
         <div
           v-for="item in process
             .find((one) => one.key === 'process_list')

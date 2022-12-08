@@ -7,7 +7,11 @@
       </div>
     </div>
     <div class="row special-carousel">
-      <swiper :options="swiperOption" class="owl-carousel">
+      <swiper
+        :options="swiperOption"
+        class="owl-carousel"
+        v-if="team.length >= 1"
+      >
         <swiper-slide v-for="member in team" :key="member.id">
           <div class="item">
             <div class="row m-0 justify-content-center">
