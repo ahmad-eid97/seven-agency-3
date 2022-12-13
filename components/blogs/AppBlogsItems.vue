@@ -4,15 +4,12 @@
       <div class="section-title text-center">
         <span class="sp-color2">Latest Blog</span>
         <h2>Let’s Check Some Latest Blog</h2>
-        <div class="heading-spacer">
-          <i class="fa-solid fa-angle-down"></i>
-        </div>
       </div>
-      <div class="row pt-45" v-if="blogs.blogs.length >= 1">
+      <div class="row pt-45" v-if="blogs.blogs.length">
         <div
           v-for="blog in blogs.blogs"
           :key="blog.id"
-          class="col-lg-4 col-md-6"
+          class="col-lg-4 col-md-6 mb-4"
           @click="$router.push(localePath(`/blog/${blog.id}`))"
         >
           <div class="blog-card">
@@ -31,7 +28,10 @@
             <div class="content">
               <ul>
                 <li>
-                  <a href="#"><i class="fa-regular fa-user"></i> By Admin</a>
+                  <a href="#"
+                    ><i class="fa-regular fa-user"></i> By
+                    {{ blog.username }}</a
+                  >
                 </li>
                 <li>
                   <a href="index.html"
@@ -39,7 +39,7 @@
                   >
                 </li>
               </ul>
-              <p>{{ blog.description }}</p>
+              <p>{{ blog.short_description }}</p>
             </div>
           </div>
         </div>

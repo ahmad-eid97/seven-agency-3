@@ -72,11 +72,10 @@ export default {
 </script>
 <style lang="scss">
 .counter-area {
-  padding: 100px 0;
+  padding: 20px 0 50px;
 }
 .counter-area .section-title {
   margin: 0;
-  text-align: center !important;
 }
 .counter-area .section-title span {
   margin-bottom: 8px;
@@ -109,7 +108,7 @@ export default {
 .section-title p {
   padding-top: 10px;
   margin-bottom: 0;
-  max-width: 530px;
+  /* max-width: 530px; */
   color: #444;
 }
 .pt-45 {
@@ -117,8 +116,11 @@ export default {
 }
 .counter-another-content {
   margin-bottom: 25px;
-  padding-left: 90px;
+  /* padding-left: 90px; */
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 .counter-another-content h3 {
   color: #212529;
@@ -140,7 +142,7 @@ export default {
   font-weight: 600;
 }
 .counter-another-content i {
-  position: absolute;
+  /* position: absolute; */
   line-height: 1;
   font-size: 60px;
   top: 3px;

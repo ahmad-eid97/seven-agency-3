@@ -3,7 +3,7 @@
     <h3 class="title">Gallery</h3>
     <ul class="blog-gallery" v-if="blogDetails.gallery.length >= 1">
       <li
-        v-for="(image, index) in blogDetails.gallery"
+        v-for="(image, index) in blogDetails.gallery.slice(0, 6)"
         :key="index"
         style="display: inline-block; margin: 0 5px 5px 0"
       >
@@ -69,7 +69,6 @@ export default {
   padding-left: 5px;
   padding-right: 5px;
   padding-top: 10px;
-  cursor: pointer;
 }
 .side-bar-widget .blog-gallery li a {
   display: block;

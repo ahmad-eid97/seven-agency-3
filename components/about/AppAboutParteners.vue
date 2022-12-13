@@ -56,7 +56,7 @@ export default {
 </script>
 <style>
 .about-partners {
-  padding: 45px 100px 10px !important;
+  padding: 45px 100px 20px !important;
   background-color: var(--main-color) !important;
 }
 .about-partners::before {

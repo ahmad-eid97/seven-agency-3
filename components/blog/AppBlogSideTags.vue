@@ -19,7 +19,7 @@ export default {
 <style>
 .side-bar-widget .title {
   font-size: 20px;
-  color: #252525;
+  color: #212529;
   padding: 0;
   font-weight: 600;
   position: relative;
@@ -40,18 +40,18 @@ export default {
   color: #fff;
 }
 .side-bar-widget .side-bar-widget-tag li a {
-  color: #f3615a;
+  color: var(--main-color);
   padding: 7px 15px;
   background-color: transparent;
-  border: 3px solid #f3615a;
+  border: 2px solid var(--main-color);
   font-size: 14px;
   font-weight: 400;
-  border-radius: 0;
+  border-radius: 20px;
   -webkit-transition: 0.7s;
   transition: 0.7s;
 }
 .side-bar-widget .side-bar-widget-tag li:hover a {
   color: #fff;
-  background-color: #f3615a;
+  background-color: var(--main-color);
 }
 </style>
