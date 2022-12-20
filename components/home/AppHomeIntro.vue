@@ -80,6 +80,8 @@
             <b-nav-item :to="localePath('/contact')">Case Studies</b-nav-item>
             <b-nav-item :to="localePath('/about')">About</b-nav-item>
             <b-nav-item :to="localePath('/blogs')">Blogs</b-nav-item>
+            <b-nav-item :to="localePath('/careers')">Career</b-nav-item>
+            <b-nav-item :to="localePath('/events')">Events</b-nav-item>
           </b-navbar-nav>
         </b-collapse>
         <div href="#" class="social-header">
@@ -95,6 +97,9 @@
         </div>
         <div>
           <lang-switch></lang-switch>
+        </div>
+        <div v-if="$store.state.user" class="logout" @click="logout">
+          <i class="fa-regular fa-right-from-bracket"></i>
         </div>
         <b-navbar-toggle target="navbar-toggle-collapse">
           <template #default="{ expanded }">
@@ -134,6 +139,12 @@ export default {
   },
   mounted() {},
   methods: {
+    logout() {
+      this.$store.commit("setUserData", null);
+      this.$cookies.remove("cms-auth");
+      this.$cookies.remove("cms-user");
+      this.$router.push(this.localePath("/login"));
+    },
     handleScroll() {
       let box = document.querySelector(".intro-sec");
       let height = box.offsetHeight;
@@ -162,6 +173,17 @@ export default {
   100% {
     transform: translateY(0);
   }
+}
+.logout {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--main-color);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+  cursor: pointer;
 }
 .scrolldown {
   -webkit-animation-delay: 0s;

@@ -33,7 +33,7 @@
               style="width: 250px"
               class="animatedTop"
             />
-            <h1 class="animatedLeft">OUR <span>SERVICES</span></h1>
+            <h1 class="animatedLeft">EVENTS <span>DETAILS</span></h1>
             <img
               class="scrolldown"
               src="//the7.io/agency/wp-content/uploads/sites/43/2021/09/arrow-down-40.png"
@@ -111,7 +111,7 @@
 import langSwitch from "../langSwitch/langSwitch.vue";
 import "animate.css/animate.min.css";
 export default {
-  name: "AppBlogsHeading",
+  name: "AppBlogHeading",
   data() {
     return {
       show: false,
@@ -260,7 +260,7 @@ export default {
   padding: 17px 40px;
   display: inline-block;
 }
-.intro .form i {
+.intro .form svg {
   margin-right: 12px;
 }
 .intro .form input {

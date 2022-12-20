@@ -23,45 +23,6 @@
         alt=""
       />
     </div>
-    <!-- <div id="slider-2-slide-3-layer-12" class="rs-pxl-3 rs-layer" data-type="image" data-rsp_ch="on" data-xy="xo:-663px,-790px,-790px,-663px;yo:-194px;" data-text="l:22;a:inherit;" data-dim="w:['1682px','1682px','1682px','1682px'];h:['750px','750px','750px','750px'];" data-vbility="t,t,f,f" data-basealign="slide" data-frame_0="rY:180;rZ:-43;" data-frame_1="o:0.8;rY:180;rZ:-43;st:400;sp:1000;sR:400;" data-frame_999="o:0;st:w;sR:7600;" style="z-index: 11;
-        position: absolute;
-        display: block;
-        overflow: visible;
-        color: rgb(255, 255, 255);
-        width: 70vw;
-        height: 70vh;
-        min-height: 0px;
-        min-width: 0px;
-        max-height: none;
-        max-width: none;
-        transform-origin: 50% 50% 0px;
-        opacity: 0.8;
-        transform: perspective(600px) rotate(-43deg) rotateY(180deg);
-        visibility: visible;
-        left: -12vw;
-        top: -10vh;" data-idcheck="true" data-stylerecorder="true" data-initialised="true">
-            <img src="//the7.io/agency/wp-content/uploads/sites/43/2017/10/art-poly-slider.png" alt="" class="tp-rs-img rs-lazyload" data-lazyload="//the7.io/agency/wp-content/uploads/sites/43/2017/10/art-poly-slider.png" data-no-retina="" data-src-rs-ref="//the7.io/agency/wp-content/uploads/sites/43/2017/10/art-poly-slider.png" style="position: relative; height: 100%; width: 100%;" width="2566" height="1144">
-        </div>
-        
-        <div id="slider-2-slide-3-layer-12" class="rs-pxl-3 rs-layer" data-type="image" data-rsp_ch="on" data-xy="xo:-663px,-790px,-790px,-663px;yo:-194px;" data-text="l:22;a:inherit;" data-dim="w:['1682px','1682px','1682px','1682px'];h:['750px','750px','750px','750px'];" data-vbility="t,t,f,f" data-basealign="slide" data-frame_0="rY:180;rZ:-43;" data-frame_1="o:0.8;rY:180;rZ:-43;st:400;sp:1000;sR:400;" data-frame_999="o:0;st:w;sR:7600;" style="z-index: 11;
-        position: absolute;
-        display: block;
-        overflow: visible;
-        color: rgb(255, 255, 255);
-        width: 70vw;
-        height: 70vh;
-        min-height: 0px;
-        min-width: 0px;
-        max-height: none;
-        max-width: none;
-        transform-origin: 50% 50% 0px;
-        opacity: 0.8;
-        transform: perspective(600px) rotate(43deg) rotateY(180deg);
-        visibility: visible;
-        right: -12vw;
-        top: -10vh;" data-idcheck="true" data-stylerecorder="true" data-initialised="true">
-            <img src="//the7.io/agency/wp-content/uploads/sites/43/2017/10/art-poly-slider.png" alt="" class="tp-rs-img rs-lazyload" data-lazyload="//the7.io/agency/wp-content/uploads/sites/43/2017/10/art-poly-slider.png" data-no-retina="" data-src-rs-ref="//the7.io/agency/wp-content/uploads/sites/43/2017/10/art-poly-slider.png" style="position: relative; height: 100%; width: 100%;" width="2566" height="1144">
-        </div> -->
     <div v-tilt="{ tiltMaxAngleY: 10, tiltMaxAngleX: 10 }" class="intro">
       <div class="intro">
         <div class="row m-0 align-items-center justify-content-center">
@@ -107,6 +68,8 @@
             <b-nav-item :to="localePath('/contact')">Case Studies</b-nav-item>
             <b-nav-item :to="localePath('/about')">About</b-nav-item>
             <b-nav-item :to="localePath('/blogs')">Blogs</b-nav-item>
+            <b-nav-item :to="localePath('/careers')">Career</b-nav-item>
+            <b-nav-item :to="localePath('/events')">Events</b-nav-item>
           </b-navbar-nav>
         </b-collapse>
         <div href="#" class="social-header">
