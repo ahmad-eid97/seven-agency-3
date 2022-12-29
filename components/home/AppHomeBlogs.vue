@@ -34,7 +34,7 @@
                 <h3>{{ blog.title }}</h3>
 
                 <p>
-                  {{ blog.description }}
+                  {{ blog.description.substring(0, 250) + "..." }}
                 </p>
                 <div href="#" class="btns">
                   <nuxt-link :to="`/blog/${blog.id}`" class="btn">
