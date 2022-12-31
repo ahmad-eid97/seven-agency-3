@@ -1,5 +1,6 @@
 <template>
   <div id="app" :class="$i18n.locale === 'en' ? 'english' : 'arabic'">
+    <Loader v-if="$store.state.showLoader" />
     <!-- <app-header ></app-header> -->
 
     <router-view />
@@ -25,6 +26,7 @@
 </template>
 
 <script>
+import Loader from "../components/UIs/Loader.vue";
 import cart from "../components/cart/cart.vue";
 // import AppHeader from '../components/header/AppHeader.vue'
 import AppFooter from "../components/footer/AppFooter.vue";
@@ -35,6 +37,7 @@ export default {
     // AppHeader,
     AppFooter,
     cart,
+    Loader,
   },
   data() {
     return {
