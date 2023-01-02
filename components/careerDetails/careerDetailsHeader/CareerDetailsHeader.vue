@@ -1,5 +1,5 @@
 <template>
-  <section class="intro-sec p-0">
+  <section class="intro-sec">
     <div
       id="slider-2-slide-3-layer-1"
       class="tp-shape tp-shapewrapper rs-layer"
@@ -23,6 +23,14 @@
         alt=""
       />
     </div>
+
+    <!-- ANIMATED PARTICLES BACKGROUND -->
+    <img
+      src="/assets/images/animatedBack.png"
+      alt="animatedBackground"
+      class="animatedBackground"
+    />
+
     <div v-tilt="{ tiltMaxAngleY: 10, tiltMaxAngleX: 10 }" class="intro">
       <div class="intro">
         <div class="row m-0 align-items-center justify-content-center">
@@ -33,9 +41,9 @@
               style="width: 250px"
               class="animatedTop"
             />
-            <h1 class="animatedLeft">CAREER <span>DETAILS</span></h1>
+            <h1 class="animatedLeft"><span>CAREER</span> DETAILS</h1>
             <img
-              class="scrolldown"
+              class="scrolldown animatedDown"
               src="//the7.io/agency/wp-content/uploads/sites/43/2021/09/arrow-down-40.png"
               alt=""
             />
@@ -46,12 +54,7 @@
     <header :class="!topOfPage ? 'onScroll' : ''">
       <b-navbar toggleable="lg">
         <b-navbar-brand :href="localePath('/')">
-          <img
-            src="/assets/images/logo.png"
-            alt="logoImage"
-            style="width: 250px"
-            class="navLogo"
-          />
+          <img src="/assets/images/logo.png" alt="logoImage" class="navLogo" />
         </b-navbar-brand>
 
         <b-collapse
@@ -70,38 +73,47 @@
             <b-nav-item :to="localePath('/blogs')">Blogs</b-nav-item>
             <b-nav-item :to="localePath('/careers')">Career</b-nav-item>
             <b-nav-item :to="localePath('/events')">Events</b-nav-item>
+            <b-nav-item
+              :to="localePath('/login')"
+              v-if="$store.state.user"
+              class="outLarge"
+              @click="logout"
+              >Logout</b-nav-item
+            >
           </b-navbar-nav>
         </b-collapse>
-        <div href="#" class="social-header">
-          <a href="#">
-            <i class="fa-brands fa-facebook-f"></i>
-          </a>
-          <a href="#">
-            <i class="fa-brands fa-twitter"></i>
-          </a>
-          <a href="#">
-            <i class="fa-solid fa-globe"></i>
-          </a>
+        <div class="d-flex align-items-center">
+          <div href="#" class="social-header">
+            <a href="#">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="#">
+              <i class="fa-brands fa-twitter"></i>
+            </a>
+            <a href="#">
+              <i class="fa-solid fa-globe"></i>
+            </a>
+          </div>
+          <div>
+            <lang-switch></lang-switch>
+          </div>
+          <div v-if="$store.state.user" class="logout" @click="logout">
+            <i class="fa-regular fa-right-from-bracket"></i>
+          </div>
+          <b-navbar-toggle target="navbar-toggle-collapse">
+            <template #default="{ expanded }">
+              <span
+                class="menu-trigger"
+                :class="expanded ? 'active' : ''"
+                id="menu03"
+              >
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </template>
+          </b-navbar-toggle>
         </div>
-        <div>
-          <lang-switch></lang-switch>
-        </div>
-        <div v-if="$store.state.user" class="logout" @click="logout">
-          <i class="fa-regular fa-right-from-bracket"></i>
-        </div>
-        <b-navbar-toggle target="navbar-toggle-collapse">
-          <template #default="{ expanded }">
-            <span
-              class="menu-trigger"
-              :class="expanded ? 'active' : ''"
-              id="menu03"
-            >
-              <span></span>
-              <span></span>
-              <span></span>
-            </span>
-          </template>
-        </b-navbar-toggle>
       </b-navbar>
     </header>
   </section>
@@ -111,7 +123,7 @@
 import langSwitch from "../../langSwitch/langSwitch.vue";
 import "animate.css/animate.min.css";
 export default {
-  name: "AppBlogHeading",
+  name: "AppHomeIntro",
   data() {
     return {
       show: false,
@@ -145,8 +157,12 @@ export default {
   },
 };
 </script>
-
-<style>
+<style lang="scss">
+.animatedBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 @keyframes sdb07 {
   0% {
     transform: translateY(0);
@@ -168,6 +184,9 @@ export default {
   place-items: center;
   font-size: 1.2rem;
   cursor: pointer;
+  @include md {
+    display: none !important;
+  }
 }
 .scrolldown {
   -webkit-animation-delay: 0s;
@@ -202,11 +221,23 @@ export default {
   line-height: 110px;
   color: #fff;
 }
+@include xs {
+  .intro h1 {
+    font-size: 60px;
+    line-height: 110px;
+  }
+}
+.outLarge {
+  display: none;
+  @include md {
+    display: inline;
+  }
+}
 .intro h1 span {
-  color: rgb(243, 97, 90);
+  color: var(--main-color);
 }
 .intro p {
-  color: rgb(243, 97, 90);
+  color: var(--main-color);
   display: block;
   margin-top: 30px;
   font-size: 30px;
@@ -260,7 +291,7 @@ export default {
   padding: 17px 40px;
   display: inline-block;
 }
-.intro .form svg {
+.intro .form i {
   margin-right: 12px;
 }
 .intro .form input {
@@ -315,16 +346,35 @@ header {
 }
 header .navbar {
   padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @include md {
+    padding-top: 20px !important;
+  }
 }
 .navbar-brand {
   padding: 0 50px 0 0;
 }
 .navbar-brand img {
-  max-width: 230px;
+  width: 200px;
 }
 .nav-item {
   position: relative;
   margin: 0 12px;
+}
+.nav-item a:hover {
+  color: #fff !important;
+  background-color: transparent;
+}
+@include md {
+  .nav-item a {
+    color: var(--main-color) !important;
+    margin: 0 !important;
+  }
+  .nav-item a:hover {
+    color: var(--main-color) !important;
+  }
 }
 .nav-item::after {
   content: " ";
@@ -339,7 +389,7 @@ header .navbar {
 }
 .nav-item.active::after,
 .nav-item:hover:after {
-  background-color: rgb(243, 97, 90);
+  background-color: var(--main-color);
   left: 18px;
   right: 18px;
   bottom: 18px;
@@ -353,8 +403,16 @@ header .navbar {
   line-height: 22px;
   color: #fff !important;
 }
+.social-header {
+  @include xxl {
+    display: none;
+  }
+  @include md {
+    display: inline;
+  }
+}
 .social-header a {
-  color: rgb(243, 97, 90);
+  color: var(--main-color);
   display: inline-flex;
   font-size: 16px;
   height: 28px;
@@ -363,22 +421,23 @@ header .navbar {
   margin-right: 2px;
   position: relative;
   text-align: center;
-  text-decoration-color: rgb(243, 97, 90);
+  text-decoration-color: var(--main-color);
   text-decoration-line: none;
   width: 28px;
-  border: 2px solid rgb(243, 97, 90);
+  border: 2px solid var(--main-color);
   border-radius: 100px;
   align-items: center;
   transition: all 0.15s linear;
 }
 .social-header a:hover {
-  background-color: rgb(243, 97, 90);
-  color: #fff;
+  background-color: var(--main-color);
+  color: #fff !important;
 }
 .navbar-toggler,
 .navbar-toggler:focus {
   border: none;
   box-shadow: none;
+  margin: 0;
 }
 .menu-trigger,
 .menu-trigger span {
@@ -438,6 +497,7 @@ header .navbar {
 }
 .onScroll nav {
   width: 100%;
+  padding-top: 0 !important;
 }
 @media screen and (max-width: 1049px) {
   header .phone {

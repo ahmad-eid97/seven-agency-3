@@ -58,12 +58,7 @@
     <header :class="!topOfPage ? 'onScroll' : ''">
       <b-navbar toggleable="lg">
         <b-navbar-brand :href="localePath('/')">
-          <img
-            src="/assets/images/logo.png"
-            alt="logoImage"
-            style="width: 250px"
-            class="navLogo"
-          />
+          <img src="/assets/images/logo.png" alt="logoImage" class="navLogo" />
         </b-navbar-brand>
 
         <b-collapse
@@ -82,38 +77,47 @@
             <b-nav-item :to="localePath('/blogs')">Blogs</b-nav-item>
             <b-nav-item :to="localePath('/careers')">Career</b-nav-item>
             <b-nav-item :to="localePath('/events')">Events</b-nav-item>
+            <b-nav-item
+              :to="localePath('/login')"
+              v-if="$store.state.user"
+              class="outLarge"
+              @click="logout"
+              >Logout</b-nav-item
+            >
           </b-navbar-nav>
         </b-collapse>
-        <div href="#" class="social-header">
-          <a href="#">
-            <i class="fa-brands fa-facebook-f"></i>
-          </a>
-          <a href="#">
-            <i class="fa-brands fa-twitter"></i>
-          </a>
-          <a href="#">
-            <i class="fa-solid fa-globe"></i>
-          </a>
+        <div class="d-flex align-items-center">
+          <div href="#" class="social-header">
+            <a href="#">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="#">
+              <i class="fa-brands fa-twitter"></i>
+            </a>
+            <a href="#">
+              <i class="fa-solid fa-globe"></i>
+            </a>
+          </div>
+          <div>
+            <lang-switch></lang-switch>
+          </div>
+          <div v-if="$store.state.user" class="logout" @click="logout">
+            <i class="fa-regular fa-right-from-bracket"></i>
+          </div>
+          <b-navbar-toggle target="navbar-toggle-collapse">
+            <template #default="{ expanded }">
+              <span
+                class="menu-trigger"
+                :class="expanded ? 'active' : ''"
+                id="menu03"
+              >
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </template>
+          </b-navbar-toggle>
         </div>
-        <div>
-          <lang-switch></lang-switch>
-        </div>
-        <div v-if="$store.state.user" class="logout" @click="logout">
-          <i class="fa-regular fa-right-from-bracket"></i>
-        </div>
-        <b-navbar-toggle target="navbar-toggle-collapse">
-          <template #default="{ expanded }">
-            <span
-              class="menu-trigger"
-              :class="expanded ? 'active' : ''"
-              id="menu03"
-            >
-              <span></span>
-              <span></span>
-              <span></span>
-            </span>
-          </template>
-        </b-navbar-toggle>
       </b-navbar>
     </header>
   </section>
@@ -184,6 +188,9 @@ export default {
   place-items: center;
   font-size: 1.2rem;
   cursor: pointer;
+  @include md {
+    display: none !important;
+  }
 }
 .scrolldown {
   -webkit-animation-delay: 0s;
@@ -222,6 +229,12 @@ export default {
   .intro h1 {
     font-size: 60px;
     line-height: 110px;
+  }
+}
+.outLarge {
+  display: none;
+  @include md {
+    display: inline;
   }
 }
 .intro h1 span {
@@ -337,12 +350,18 @@ header {
 }
 header .navbar {
   padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @include md {
+    padding-top: 20px !important;
+  }
 }
 .navbar-brand {
   padding: 0 50px 0 0;
 }
 .navbar-brand img {
-  max-width: 230px;
+  width: 200px;
 }
 .nav-item {
   position: relative;
@@ -388,6 +407,14 @@ header .navbar {
   line-height: 22px;
   color: #fff !important;
 }
+.social-header {
+  @include xxl {
+    display: none;
+  }
+  @include md {
+    display: inline;
+  }
+}
 .social-header a {
   color: var(--main-color);
   display: inline-flex;
@@ -414,6 +441,7 @@ header .navbar {
 .navbar-toggler:focus {
   border: none;
   box-shadow: none;
+  margin: 0;
 }
 .menu-trigger,
 .menu-trigger span {
@@ -473,6 +501,7 @@ header .navbar {
 }
 .onScroll nav {
   width: 100%;
+  padding-top: 0 !important;
 }
 @media screen and (max-width: 1049px) {
   header .phone {

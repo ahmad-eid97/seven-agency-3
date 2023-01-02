@@ -140,6 +140,9 @@ export default {
   &.opened {
     transform: translateX(0);
   }
+  @include xs {
+    width: 350px;
+  }
 }
 .cartIcon {
   border: 1px solid var(--main-color);
@@ -151,7 +154,7 @@ export default {
   cursor: pointer;
   position: fixed;
   top: 90px;
-  right: 50px;
+  right: 20px;
   z-index: 999;
   background-color: #fff;
   span {
