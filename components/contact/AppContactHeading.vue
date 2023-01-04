@@ -128,6 +128,20 @@ export default {
   mounted() {},
   methods: {
     logout() {
+      this.$swal({
+        title: "Logout!",
+        text: "Are you sure? You want to logout from your account!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#ff5e57",
+        confirmButtonText: "Logout",
+      }).then((result) => {
+        if (result.value) {
+          this.confirmLogout();
+        }
+      });
+    },
+    confirmLogout() {
       this.$store.commit("setUserData", null);
       this.$cookies.remove("cms-auth");
       this.$cookies.remove("cms-user");

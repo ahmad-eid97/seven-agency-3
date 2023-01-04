@@ -7,6 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   scroll-behavior: unset !important;
+  overflow-x: hidden;
 }
 
 #app {
@@ -271,4 +272,18 @@ img {
 }
 .slick-next {
   right: 0px !important;
+}
+.swal2-container {
+  padding: 0 !important;
+}
+.swal2-shown {
+  padding: 0 !important;
+}
+.swal2-confirm:focus,
+.swal2-cancel:focus {
+  box-shadow: none !important;
+}
+.swal2-cancel {
+  background: #e5e5e5 !important;
+  color: rgb(51, 51, 51) !important;
 }
