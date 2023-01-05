@@ -5,9 +5,12 @@
         <span class="sp-color2">Latest Blog</span>
         <h2>Let’s Check Some Latest Blog</h2>
       </div>
-      <div class="row pt-45" v-if="blogs.blogs.length">
+      <div
+        class="row pt-45 justify-content-center"
+        v-if="allBlogs.blogs.length >= 1"
+      >
         <div
-          v-for="blog in blogs.blogs"
+          v-for="blog in allBlogs.blogs"
           :key="blog.id"
           class="col-lg-4 col-md-6 mb-4"
           @click="$router.push(localePath(`/blog/${blog.id}`))"
@@ -15,7 +18,17 @@
           <div class="blog-card">
             <div class="blog-img">
               <router-link to="blog">
-                <img :src="blog.image" alt="Blog Images" />
+                <img
+                  v-if="!blog.image"
+                  src="/assets/images/noImage.png"
+                  alt="Blog Image"
+                />
+                <img
+                  v-if="blog.image"
+                  :src="blog.image"
+                  alt="Blog Image"
+                  @error="setAltImg"
+                />
               </router-link>
               <div class="blog-tag">
                 <h3>{{ $date(new Date(blog.publish_date), "dd") }}</h3>
@@ -29,8 +42,7 @@
               <ul>
                 <li>
                   <a href="#"
-                    ><i class="fa-regular fa-user"></i> By
-                    {{ blog.username }}</a
+                    ><i class="fa-regular fa-user"></i>By {{ blog.username }}</a
                   >
                 </li>
                 <li>
@@ -45,15 +57,13 @@
         </div>
         <div class="col-lg-12 col-md-12 text-center">
           <div class="pagination-area">
-            <a href="#" class="page-numbers">
-              <i class="fa-solid fa-arrow-left"></i>
-            </a>
-            <span class="page-numbers current" aria-current="page">1</span>
-            <a href="#" class="page-numbers">2</a>
-            <a href="#" class="page-numbers">3</a>
-            <a href="#" class="page-numbers">
-              <i class="fa-solid fa-arrow-right"></i>
-            </a>
+            <b-pagination
+              v-model="allBlogs.meta.current_page"
+              :total-rows="allBlogs.meta.total"
+              :per-page="allBlogs.meta.per_page"
+              aria-controls="my-table"
+              @change="changePage"
+            ></b-pagination>
           </div>
         </div>
       </div>
@@ -65,6 +75,21 @@
 export default {
   name: "AppBlogsItems",
   props: ["blogs"],
+  data() {
+    return {
+      allBlogs: this.blogs,
+    };
+  },
+  methods: {
+    setAltImg(event) {
+      event.target.src = "/assets/images/noImage.png";
+    },
+    async changePage(pageNum) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      const response = await this.$axios.get(`/blogs?page=${pageNum}`);
+      this.allBlogs = response.data.data;
+    },
+  },
 };
 </script>
 
@@ -73,25 +98,36 @@ export default {
   margin-bottom: 8px;
   font-weight: 600;
   display: block;
-  color: #f3615a;
+  color: var(--main-color);
 }
 .blog-area .section-title h2 {
-  font-weight: 400;
-  line-height: 41.6px;
-  letter-spacing: 1px;
-  text-transform: capitalize;
+  max-width: 600px;
+  color: #212529;
+  font-size: 35px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 42px;
+  text-align: left;
+  margin-top: 10px;
+  margin-right: auto;
+  margin-bottom: 15px;
+  margin-left: auto;
+  text-align: center;
+}
+.blog-area .section-title .seprator img {
+  width: 70px;
+  margin-top: 5px;
   margin-bottom: 20px;
 }
-
 .blog-card {
   background-color: #fff;
   -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
   margin-bottom: 30px;
-  border-radius: 0;
+  border-radius: 12px;
   -webkit-transition: 0.9s;
   transition: 0.9s;
-  border: 3px solid #f3615a;
+  border: 1px solid #f1f1f1;
   transform: translateY(0px);
   height: 100%;
 }
@@ -110,7 +146,7 @@ export default {
   margin: 0 0 0;
 }
 .blog-card .blog-img img {
-  border-radius: 0;
+  border-radius: 12px 12px 0 0;
   height: 250px;
   width: 100%;
 }
@@ -119,10 +155,9 @@ export default {
   top: -10px;
   right: 30px;
   text-align: center;
-  border: 3px solid #f3615a;
-  background-color: #fff;
+  background-color: var(--main-color);
   padding: 15px 12px;
-  border-radius: 0;
+  border-radius: 12px;
   text-align: center;
 }
 .blog-card:hover .blog-img .blog-tag {
@@ -130,41 +165,29 @@ export default {
   top: -20px;
   right: 30px;
   text-align: center;
-  background-color: #f3615a;
+  background-color: var(--main-color);
   padding: 15px 12px;
-  border-radius: 0px;
+  border-radius: 12px;
   text-align: center;
 }
 .blog-card .blog-img .blog-tag h3 {
-  font-size: 27px;
-  color: #f3615a;
-  line-height: 1;
-  margin-bottom: 0;
-  font-weight: 500;
-}
-.blog-card:hover .blog-img .blog-tag h3 {
-  font-size: 27px;
+  font-size: 17px;
   color: #fff;
   line-height: 1;
   margin-bottom: 0;
   font-weight: 500;
 }
 .blog-card .blog-img .blog-tag span {
-  color: #f3615a;
-  line-height: 1;
-  font-weight: 500;
-}
-.blog-card:hover .blog-img .blog-tag span {
   color: #fff;
   line-height: 1;
   font-weight: 500;
 }
 .blog-card .content ul li a {
-  color: #f3615a;
+  color: #212529;
 }
 .blog-card .content ul li a i {
   font-size: 20px;
-  color: #f3615a;
+  color: var(--main-color);
   margin-right: 5px;
   position: relative;
   top: 3px;
@@ -186,7 +209,7 @@ export default {
 .blog-card h3.title {
   font-size: 22px;
   padding: 10px 30px;
-  background: #f3615a;
+  background: var(--main-color);
   text-align: center;
   position: relative;
   z-index: 1;
