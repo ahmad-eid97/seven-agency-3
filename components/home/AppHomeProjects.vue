@@ -30,15 +30,9 @@
             >
               <div class="rollover">
                 <div class="rollover-content">
-                  <a class="rollover-link" href="#">
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                  </a>
-                  <a class="rollover-link" href="#">
+                  <span class="rollover-link" href="#">
                     <i class="fa-solid fa-expand"></i>
-                  </a>
-                  <a class="rollover-link" href="#">
-                    <i class="fa-solid fa-plus"></i>
-                  </a>
+                  </span>
                 </div>
               </div>
             </div>
@@ -177,6 +171,7 @@ export default {
   background-color: rgba(255, 255, 255, 0.3);
   color: #fff;
   padding: 12px 15px;
+  cursor: pointer;
 }
 
 .projects .project {

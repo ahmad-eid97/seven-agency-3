@@ -26,6 +26,9 @@
           </div>
         </div>
       </div>
+      <div class="servicesBtn">
+        <button @click="$router.push('/services')">See All Services</button>
+      </div>
     </div>
   </section>
 </template>
@@ -41,7 +44,7 @@ export default {
   methods: {},
 };
 </script>
-<style lang="css">
+<style lang="scss">
 .services {
   background-size: cover;
   background-repeat: no-repeat;
@@ -154,5 +157,15 @@ export default {
   margin: 27px 0 0;
   border: 2px solid var(--main-color);
   opacity: 1;
+}
+.servicesBtn {
+  display: flex;
+  justify-content: center;
+  button {
+    border-radius: 0;
+    background-color: var(--main-color);
+    color: #fff;
+    padding: 8px 14px 7px;
+  }
 }
 </style>
