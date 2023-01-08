@@ -130,8 +130,8 @@ export default {
   transform: scaleY(0);
   background: linear-gradient(
     135deg,
-    rgba(38, 6, 51, 0.8) 30%,
-    rgba(236, 97, 93, 0.8) 100%
+    rgba(38, 6, 51, 0.3) 30%,
+    rgba(236, 97, 93, 0.3) 100%
   );
   opacity: 0;
   display: flex;
