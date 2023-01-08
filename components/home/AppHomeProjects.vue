@@ -30,7 +30,7 @@
             >
               <div class="rollover">
                 <div class="rollover-content">
-                  <span class="rollover-link" href="#">
+                  <span class="rollover-link">
                     <i class="fa-solid fa-expand"></i>
                   </span>
                 </div>
