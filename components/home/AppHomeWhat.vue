@@ -39,7 +39,11 @@
           class="row brands justify-content-between"
           v-if="partners.length >= 1"
         >
-          <div v-for="partner in partners" :key="partner" class="brand">
+          <div
+            v-for="partner in partners.slice(0, 6)"
+            :key="partner"
+            class="brand"
+          >
             <img class="img-fluid" :src="partner.image" :alt="partner.title" />
           </div>
         </div>

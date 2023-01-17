@@ -14,6 +14,8 @@
     <app-home-owner></app-home-owner>
     <app-home-special :team="team"></app-home-special>
     <app-home-process :process="process"></app-home-process>
+    <app-home-activities :activities="activities" />
+    <app-home-steps :steps="steps" />
     <app-home-blogs :blogs="blogs"></app-home-blogs>
     <app-home-contact></app-home-contact>
     <app-home-message></app-home-message>
@@ -37,6 +39,8 @@ import AppHomeBlogs from "../components/home/AppHomeBlogs.vue";
 import AppHomeContact from "../components/home/AppHomeContact.vue";
 import AppHomeMessage from "../components/home/AppHomeMessage.vue";
 import AppHomeBannerBottom from "../components/home/AppHomeBannerBottom.vue";
+import AppHomeActivities from "../components/home/AppHomeActivities.vue";
+import AppHomeSteps from "../components/home/AppHomeSteps.vue";
 
 export default {
   name: "Home",
@@ -83,6 +87,18 @@ export default {
 
     const blogs = await $axios.get("/blogs?latest=1");
 
+    const activities = await $axios.get("/sections/activities", {
+      headers: {
+        "Accept-Language": app.i18n.locale,
+      },
+    });
+
+    const steps = await $axios.get("/sections/steps", {
+      headers: {
+        "Accept-Language": app.i18n.locale,
+      },
+    });
+
     return {
       whyUsSection: whyUsSection.data.data,
       bannerTop: bannerTop.data.data,
@@ -95,6 +111,8 @@ export default {
       projects: projects.data.data.portfolios,
       team: team.data.data.teams,
       blogs: blogs.data.data.blogs,
+      activities: activities.data.data,
+      steps: steps.data.data,
     };
   },
   components: {
@@ -113,6 +131,8 @@ export default {
     AppHomeContact,
     AppHomeMessage,
     AppHomeBannerBottom,
+    AppHomeActivities,
+    AppHomeSteps,
   },
 };
 </script>

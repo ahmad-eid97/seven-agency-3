@@ -390,10 +390,6 @@ header .navbar {
   position: relative;
   margin: 0 12px;
 }
-.nav-item a:hover {
-  color: #fff !important;
-  background-color: transparent;
-}
 @include md {
   .nav-item a {
     color: var(--main-color) !important;

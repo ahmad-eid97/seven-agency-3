@@ -395,7 +395,7 @@ header .navbar {
   margin: 0 12px;
 }
 .nav-item a:hover {
-  color: #fff !important;
+  color: var(--main-color) !important;
   background-color: transparent;
 }
 @include md {
@@ -529,6 +529,12 @@ header .navbar {
 .onScroll nav {
   width: 100%;
   padding-top: 0 !important;
+  button {
+    color: var(--main-color) !important;
+  }
+  .navbar-collapse.show .navbar-nav {
+    top: 50px !important;
+  }
 }
 @media screen and (max-width: 1049px) {
   header .phone {
@@ -539,6 +545,9 @@ header .navbar {
 @media screen and (max-width: 991px) {
   nav {
     position: relative;
+    button {
+      color: var(--main-color) !important;
+    }
   }
   .navbar-collapse {
     position: absolute;
@@ -549,7 +558,7 @@ header .navbar {
   .navbar-collapse.show .navbar-nav {
     position: absolute;
     width: 100%;
-    top: 104px;
+    top: 70px !important;
   }
   .nav-item {
     width: 100%;

@@ -127,32 +127,25 @@ export default {
 }
 
 .projects .image .rollover {
-  transform: scaleY(0);
-  background: linear-gradient(
-    135deg,
-    rgba(38, 6, 51, 0.3) 30%,
-    rgba(236, 97, 93, 0.3) 100%
-  );
+  background-image: linear-gradient(0deg, #f3615a 0, rgba(248, 96, 17, 0));
+  transform: translateY(0);
+  transition: opacity 0.5s ease-in-out;
   opacity: 0;
-  display: flex;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
+  display: flex;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   width: 100%;
   height: 100%;
-  line-height: normal;
-  text-align: center;
-  transition: all 0.3s ease-in-out;
-  -webkit-transform-style: preserve-3d;
 }
 .projects .image:hover .rollover {
   transform: scaleY(1);
-  opacity: 1;
+  opacity: 0.4;
 }
 .projects .image .rollover-content {
   padding: 10px;
