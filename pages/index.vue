@@ -4,10 +4,7 @@
     <app-home-who :whoWeAre="whoWeAre" :features="features"></app-home-who>
     <app-home-why :whyUsSection="whyUsSection"></app-home-why>
     <app-home-banner :bannerTop="bannerTop"></app-home-banner>
-    <app-home-what
-      :testimonials="testimonials"
-      :partners="partners"
-    ></app-home-what>
+    <app-home-what :testimonials="testimonials"></app-home-what>
     <app-home-services :services="services"></app-home-services>
     <app-home-projects :projects="projects"></app-home-projects>
     <app-home-banner-phone></app-home-banner-phone>
@@ -71,7 +68,7 @@ export default {
 
     const testimonials = await $axios.get("/testimonials");
 
-    const partners = await $axios.get("/partners");
+    // const partners = await $axios.get("/partners");
 
     const services = await $axios.get("/services");
 
@@ -105,7 +102,7 @@ export default {
       features: features.data.data,
       whoWeAre: whoWeAre.data.data,
       testimonials: testimonials.data.data.testimonials,
-      partners: partners.data.data.partners,
+      // partners: partners.data.data.partners,
       services: services.data.data.services,
       process: process.data.data,
       projects: projects.data.data.portfolios,

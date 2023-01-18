@@ -35,7 +35,9 @@
             </swiper-slide>
           </swiper>
         </div>
-        <div
+        <!-- PARTNERS SECTION -->
+
+        <!-- <div
           class="row brands justify-content-between"
           v-if="partners.length >= 1"
         >
@@ -46,7 +48,7 @@
           >
             <img class="img-fluid" :src="partner.image" :alt="partner.title" />
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>
@@ -55,7 +57,7 @@
 <script>
 export default {
   name: "AppHomeWhat",
-  props: ["testimonials", "partners"],
+  props: ["testimonials"],
   data() {
     return {
       swiperOption: {

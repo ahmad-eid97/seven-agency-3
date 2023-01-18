@@ -529,9 +529,9 @@ header .navbar {
 .onScroll nav {
   width: 100%;
   padding-top: 0 !important;
-  button {
+  /* button {
     color: var(--main-color) !important;
-  }
+  } */
   .navbar-collapse.show .navbar-nav {
     top: 50px !important;
   }

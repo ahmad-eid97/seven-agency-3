@@ -18,7 +18,7 @@
                 .find((one) => one.key === 'process_list')
                 .value.slice(0, 2)"
               :key="item"
-              class="col-6"
+              class="col-6 square"
             >
               <li class="icon_list_item">
                 <div class="icon_list_icon">
@@ -63,7 +63,7 @@
                 process.find((one) => one.key === 'process_list').value.length
               )"
             :key="item"
-            class="icon_list_item"
+            class="icon_list_item squareTwo"
           >
             <div class="icon_list_icon">
               <i :class="item.icon"></i>
@@ -192,6 +192,19 @@ export default {
   // width: 385px;
   position: relative;
   display: table-cell;
+  @include xs {
+    width: 100px;
+  }
+}
+.square:nth-of-type(2) {
+  .icon_list_connector {
+    display: none;
+  }
+}
+.squareTwo:nth-of-type(3) {
+  .icon_list_connector {
+    display: none;
+  }
 }
 .process .icon_list_icon {
   background-color: var(--main-color);

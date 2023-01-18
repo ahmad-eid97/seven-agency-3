@@ -129,6 +129,11 @@ img {
   background-color: var(--main-color) !important;
 }
 
+.dropdown li .nuxt-link-active::after,
+.dropdown li .nuxt-link-exact-active::after {
+  content: none !important;
+}
+
 @media (max-width: 992px) {
   .nuxt-link-active::after,
   .nuxt-link-exact-active::after {
