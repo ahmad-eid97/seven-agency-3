@@ -1,24 +1,591 @@
 <template>
-  <div class="page-heading">
-    <div class="row justify-content-center m-0">
-      <h3 class="col-12 text-center title">Category Details</h3>
-      <div class="col-12 text-center">
-        <div class="breadcrumb">
-          <router-link to="/"> Home </router-link>
-          <a href="">
-            <i class="fa-solid fa-angles-right"></i>
-          </a>
-          <a href="#"> Careers </a>
+  <section class="intro-sec">
+    <div
+      id="slider-2-slide-3-layer-1"
+      class="tp-shape tp-shapewrapper rs-layer"
+      data-type="shape"
+      data-rsp_ch="on"
+      data-xy="x:c;y:m;"
+      data-text="fw:100;a:inherit;"
+      data-dim="w:100%;h:100%;"
+      data-basealign="slide"
+      data-frame_1="o:0.8;sR:10;"
+      data-frame_999="o:0;st:w;sR:8690;"
+      data-idcheck="true"
+      data-stylerecorder="true"
+      data-initialised="true"
+    ></div>
+    <div class="after_intro">
+      <img
+        style=""
+        class="img-fluid"
+        src="//the7.io/agency/wp-content/uploads/sites/43/2017/10/art-poly-slider.png"
+        alt=""
+      />
+    </div>
+
+    <!-- ANIMATED PARTICLES BACKGROUND -->
+    <img
+      src="/assets/images/animatedBack.png"
+      alt="animatedBackground"
+      class="animatedBackground"
+    />
+
+    <div v-tilt="{ tiltMaxAngleY: 10, tiltMaxAngleX: 10 }" class="intro">
+      <div class="intro">
+        <div class="row m-0 align-items-center justify-content-center">
+          <div class="col-auto text-center">
+            <img
+              src="/assets/images/logo.png"
+              alt="logoImage"
+              style="width: 250px"
+              class="animatedTop"
+            />
+            <h1 class="animatedLeft"><span>CAREER</span> CATEGORY</h1>
+            <img
+              class="scrolldown animatedDown"
+              src="//the7.io/agency/wp-content/uploads/sites/43/2021/09/arrow-down-40.png"
+              alt=""
+            />
+          </div>
         </div>
       </div>
     </div>
-  </div>
+    <header :class="!topOfPage ? 'onScroll' : ''">
+      <b-navbar toggleable="lg">
+        <b-navbar-brand :href="localePath('/')">
+          <img src="/assets/images/logo.png" alt="logoImage" class="navLogo" />
+        </b-navbar-brand>
+
+        <b-collapse
+          id="navbar-toggle-collapse"
+          class="ml-auto justify-content-center"
+          is-nav
+        >
+          <b-navbar-nav class="align-items-center">
+            <b-nav-item
+              active-class="active"
+              :to="localePath(`/${item.link}`)"
+              exact
+              v-for="item in $store.state.topMenu"
+              :key="item.id"
+            >
+              <span v-if="!item.child.length">{{ item.label }}</span>
+
+              <b-dropdown
+                :text="item.label"
+                block
+                class="m-2 dropdownBtn"
+                v-if="item.child.length"
+              >
+                <b-dropdown-item
+                  v-for="child in item.child"
+                  :key="child.id"
+                  :to="localePath('/' + child.link)"
+                  >{{ child.label }}</b-dropdown-item
+                >
+              </b-dropdown>
+            </b-nav-item>
+            <b-nav-item
+              v-if="$store.state.user"
+              @click="logout"
+              class="outLarge"
+            >
+              Logout
+            </b-nav-item>
+          </b-navbar-nav>
+        </b-collapse>
+        <div class="d-flex align-items-center">
+          <div href="#" class="social-header">
+            <a href="#">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="#">
+              <i class="fa-brands fa-twitter"></i>
+            </a>
+            <a href="#">
+              <i class="fa-solid fa-globe"></i>
+            </a>
+          </div>
+          <div>
+            <lang-switch></lang-switch>
+          </div>
+          <div v-if="$store.state.user" class="logout" @click="logout">
+            <i class="fa-regular fa-right-from-bracket"></i>
+          </div>
+          <b-navbar-toggle target="navbar-toggle-collapse">
+            <template #default="{ expanded }">
+              <span
+                class="menu-trigger"
+                :class="expanded ? 'active' : ''"
+                id="menu03"
+              >
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </template>
+          </b-navbar-toggle>
+        </div>
+      </b-navbar>
+    </header>
+  </section>
 </template>
 
 <script>
+import langSwitch from "../langSwitch/langSwitch.vue";
+import "animate.css/animate.min.css";
 export default {
-  name: "AppBlogHeading",
+  name: "AppHomeIntro",
+  data() {
+    return {
+      show: false,
+      show1: false,
+      topOfPage: true,
+    };
+  },
+  components: {
+    langSwitch,
+  },
+  beforeMount() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  mounted() {},
+  methods: {
+    logout() {
+      this.$swal({
+        title: "Logout!",
+        text: "Are you sure? You want to logout from your account!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#ff5e57",
+        confirmButtonText: "Logout",
+      }).then((result) => {
+        if (result.value) {
+          this.confirmLogout();
+        }
+      });
+    },
+    confirmLogout() {
+      this.$store.commit("setUserData", null);
+      this.$cookies.remove("cms-auth");
+      this.$cookies.remove("cms-user");
+      this.$router.push(this.localePath("/login"));
+    },
+    handleScroll() {
+      let box = document.querySelector(".intro-sec");
+      let height = box.offsetHeight;
+      if (window.pageYOffset > height) {
+        if (this.topOfPage) this.topOfPage = false;
+      } else {
+        if (!this.topOfPage) this.topOfPage = true;
+      }
+    },
+  },
 };
 </script>
+<style lang="scss">
+.animatedBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+@keyframes sdb07 {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.logout {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--main-color);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  @include md {
+    display: none !important;
+  }
+}
+.scrolldown {
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+  animation: sdb07 2s infinite;
+}
+.intro-sec {
+  background-color: rgba(255, 255, 255, 0);
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.24) 100%,
+      rgb(255, 255, 255) 100%
+    ),
+    url("https://the7.io/agency/wp-content/uploads/sites/43/2017/10/slider-img-01.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  min-height: 100vh;
+}
+.intro {
+  padding: 80px 32px 0;
+  z-index: 10;
+  position: relative;
+  height: calc(100vh - 70px);
+  min-height: 600px;
+}
+.intro h1 {
+  margin-top: 30px;
+  font-size: 100px;
+  font-weight: 900;
+  letter-spacing: normal;
+  line-height: 110px;
+  color: #fff;
+}
+@include xs {
+  .intro h1 {
+    font-size: 60px;
+    line-height: 110px;
+  }
+}
+.outLarge {
+  display: none;
+  @include md {
+    display: inline;
+  }
+}
+.intro h1 span {
+  color: var(--main-color);
+}
+.intro p {
+  color: var(--main-color);
+  display: block;
+  margin-top: 30px;
+  font-size: 30px;
+  font-style: italic;
+  font-weight: 900;
+}
+.intro .btn i {
+  margin-left: 12px;
+}
+.intro .btn:hover {
+  color: #fff;
+  background-color: transparent;
+  border-color: #fff;
+}
+.intro .form {
+  width: 438px;
+  max-width: 100%;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 24px 32px -6px;
+  background: #fff;
+  margin-bottom: -50px;
+}
+.intro .form img {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+}
+.intro .form h2 {
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: -0.416px;
+  line-height: 36.4px;
+  margin: 12px 0 4px;
+}
+.intro .form h3 {
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 26.4px;
+  margin: 12px 0 4px;
+  color: rgb(119, 119, 119);
+}
+.intro .form .phone {
+  text-decoration: none;
+  color: rgb(248, 96, 17);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.18px;
+  line-height: 21px;
+  margin: 0 0 10px;
+  padding: 17px 40px;
+  display: inline-block;
+}
+.intro .form i {
+  margin-right: 12px;
+}
+.intro .form input {
+  margin: 8px 0;
+  padding: 0 18px;
+  color: rgb(94, 94, 94);
+  font-size: 18px;
+  font-weight: 400;
+  height: 60px;
+  border-radius: 10px;
+  border: 1px solid rgb(219, 219, 219);
+  color: rgb(94, 94, 94);
+}
+.intro .form input::placeholder {
+  color: #a7a7a7;
+}
+.intro .form input:focus {
+  border: 1px solid rgb(248, 96, 17);
+  box-shadow: none;
+}
+.intro .form .btn {
+  padding: 17px 40px;
+  background-color: rgb(248, 96, 17);
+  display: block;
+  margin: 8px 0;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.18px;
+  line-height: 21px;
+  text-transform: capitalize;
+  border-radius: 10px;
+  border: 1px solid rgb(248, 96, 17);
+  color: #fff;
+}
+.intro .form .btn:hover {
+  background-color: rgb(153, 63, 15);
+  border: 1px solid rgb(153, 63, 15);
+}
+.intro .form small {
+  color: rgb(119, 119, 119);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 24px;
+}
+header {
+  height: 70px;
+  padding: 0 20px;
+  transition: all 0.1s ease 0s;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  position: relative;
+}
+header .navbar {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @include md {
+    padding-top: 20px !important;
+  }
+}
+.navbar-brand {
+  padding: 0 50px 0 0;
+}
+.navbar-brand img {
+  width: 200px;
+}
+.nav-item {
+  position: relative;
+  margin: 0 12px;
+}
+@include md {
+  .nav-item a {
+    color: var(--main-color) !important;
+    margin: 0 !important;
+  }
+  .nav-item a:hover {
+    color: var(--main-color) !important;
+  }
+}
+.nav-item::after {
+  content: " ";
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: -24px;
+  height: 2px;
+  transition: all calc(300 * 1ms) cubic-bezier(0.42, 0.01, 0.58, 1);
+  z-index: 999999998;
+  background-color: transparent;
+}
+.nav-item.active::after,
+.nav-item:hover:after {
+  background-color: var(--main-color);
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+}
+.nav-link {
+  margin: 18px 14px;
+  padding: 4px !important;
+  font-size: 18px !important;
+  font-stretch: 100%;
+  font-weight: 700 !important;
+  line-height: 22px;
+  color: #fff !important;
+}
+.social-header {
+  @include xxl {
+    display: none;
+  }
+  @include md {
+    display: inline;
+  }
+}
+.social-header a {
+  color: var(--main-color);
+  display: inline-flex;
+  font-size: 16px;
+  height: 28px;
+  justify-content: center;
+  line-height: 28px;
+  margin-right: 2px;
+  position: relative;
+  text-align: center;
+  text-decoration-color: var(--main-color);
+  text-decoration-line: none;
+  width: 28px;
+  border: 2px solid var(--main-color);
+  border-radius: 100px;
+  align-items: center;
+  transition: all 0.15s linear;
+}
+.social-header a:hover {
+  background-color: var(--main-color);
+  color: #fff !important;
+}
+.navbar-toggler,
+.navbar-toggler:focus {
+  border: none;
+  box-shadow: none;
+  margin: 0;
+}
+.menu-trigger,
+.menu-trigger span {
+  display: inline-block;
+  transition: all 0.4s;
+  box-sizing: border-box;
+}
+.menu-trigger {
+  position: relative;
+  width: 20px;
+  height: 16px;
+  background: none;
+  border: none;
+  appearance: none;
+  cursor: pointer;
+}
+.menu-trigger span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #000;
+  border-radius: 4px;
+}
+.menu-trigger span:nth-of-type(1) {
+  top: 0;
+}
+.menu-trigger span:nth-of-type(2) {
+  top: 6px;
+}
+.menu-trigger span:nth-of-type(3) {
+  bottom: 0;
+}
+#menu03.active {
+  transform: rotate(360deg);
+}
+#menu03.active span:nth-of-type(1) {
+  transform: translateY(6px) rotate(-45deg);
+}
+#menu03.active span:nth-of-type(2) {
+  transform: translateY(0) rotate(45deg);
+}
+#menu03.active span:nth-of-type(3) {
+  opacity: 0;
+}
+.onScroll {
+  position: fixed !important;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  box-shadow: none;
+  background-color: rgba(0, 0, 0, 0.8);
+  top: 0;
+  z-index: 10;
+  left: 0;
+}
+.onScroll nav {
+  width: 100%;
+  padding-top: 0 !important;
+}
+@media screen and (max-width: 1049px) {
+  header .phone {
+    display: none;
+  }
+}
 
-<style></style>
+@media screen and (max-width: 991px) {
+  nav {
+    position: relative;
+  }
+  .navbar-collapse {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  .navbar-collapse.show .navbar-nav {
+    position: absolute;
+    width: 100%;
+    top: 104px;
+  }
+  .nav-item {
+    width: 100%;
+    background: #fff;
+    text-align: center;
+  }
+
+  .nav-item:after {
+    content: none;
+  }
+  .nav-item.active .nav-link,
+  .nav-item:hover .nav-link {
+    color: rgb(248, 96, 17);
+  }
+  .nav-link {
+    padding: 16px 20px !important;
+    font-weight: 500;
+    font-size: 18px;
+    text-align: center;
+  }
+}
+.nav-item {
+  & > .dropdown {
+    display: none;
+  }
+}
+.dropdownBtn {
+  margin: 0 !important;
+  button {
+    background: none !important;
+    padding: 0 !important;
+    text-transform: none !important;
+    font-size: 1.1rem !important;
+    font-family: unset !important;
+    font-weight: 700 !important;
+    box-shadow: none !important;
+    border: none !important;
+    min-width: 60px !important;
+    position: relative;
+    top: -3px;
+    margin: 0 !important;
+  }
+  .dropdown-menu {
+    top: 40px !important;
+  }
+}
+</style>

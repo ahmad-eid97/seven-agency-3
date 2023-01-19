@@ -41,7 +41,7 @@
               style="width: 250px"
               class="animatedTop"
             />
-            <h1 class="animatedLeft"><span>PRODUCT</span> CATEGORY</h1>
+            <h1 class="animatedLeft"><span>POST</span> QOUTATION</h1>
             <img
               class="scrolldown animatedDown"
               src="//the7.io/agency/wp-content/uploads/sites/43/2021/09/arrow-down-40.png"
