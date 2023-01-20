@@ -13,11 +13,7 @@
         }}
       </h3>
       <div class="col text-center">
-        <a
-          :href="bannerTop.find((one) => one.key === 'banner-top_link').value"
-          class="btn"
-          >GET FREE CONSULTATION</a
-        >
+        <a href="/qoutation" class="btn">Get Qoutation</a>
       </div>
     </div>
   </section>

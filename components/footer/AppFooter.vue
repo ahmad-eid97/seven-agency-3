@@ -1,5 +1,6 @@
 <template>
   <footer>
+    <subscribe />
     <div class="copyrights">
       <div class="row mx-0 align-items-center justify-content-between">
         <div class="col-auto">
@@ -28,9 +29,10 @@
 </template>
 
 <script>
+import Subscribe from "../subscribe/subscribe.vue";
 export default {
   name: "AppFooter",
-  components: {},
+  components: { Subscribe },
   data() {
     return {};
   },
@@ -39,7 +41,7 @@ export default {
 </script>
 <style>
 footer {
-  margin-top: 50px;
+  /* margin-top: 50px; */
 }
 .copyrights {
   padding: 15px 30px;
