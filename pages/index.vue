@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <app-home-intro></app-home-intro>
+    <app-home-partners :partners="partners" />
     <app-home-who :whoWeAre="whoWeAre" :features="features"></app-home-who>
     <app-home-why :whyUsSection="whyUsSection"></app-home-why>
     <app-home-banner :bannerTop="bannerTop"></app-home-banner>
@@ -38,6 +39,7 @@ import AppHomeMessage from "../components/home/AppHomeMessage.vue";
 import AppHomeBannerBottom from "../components/home/AppHomeBannerBottom.vue";
 import AppHomeActivities from "../components/home/AppHomeActivities.vue";
 import AppHomeSteps from "../components/home/AppHomeSteps.vue";
+import AppHomePartners from "../components/home/AppHomePartners.vue";
 
 export default {
   name: "Home",
@@ -47,6 +49,8 @@ export default {
         "Accept-Language": app.i18n.locale,
       },
     });
+
+    const partners = await $axios.get("/partners");
 
     const features = await $axios.get("/sections/features", {
       headers: {
@@ -98,6 +102,7 @@ export default {
 
     return {
       whyUsSection: whyUsSection.data.data,
+      partners: partners.data.data.partners,
       bannerTop: bannerTop.data.data,
       features: features.data.data,
       whoWeAre: whoWeAre.data.data,
@@ -114,6 +119,7 @@ export default {
   },
   components: {
     AppHomeIntro,
+    AppHomePartners,
     AppHomeWho,
     AppHomeWhy,
     AppHomeBanner,
