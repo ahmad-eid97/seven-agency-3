@@ -105,17 +105,157 @@ export default {
       },
     };
   },
-
   methods: {},
+  mounted() {
+    document
+      .querySelector(".who")
+      .style.setProperty(
+        "--features-bg",
+        this.whoWeAre.find(
+          (one) => one.key === "who_we_are_background_active_section"
+        ).value === "color"
+          ? this.whoWeAre.find(
+              (one) => one.key === "who_we_are_background_color_section"
+            ).value
+          : `url(${
+              this.whoWeAre.find(
+                (one) => one.key === "who_we_are_background_image_section"
+              ).value
+            })`
+      );
+
+    document
+      .querySelector(".who")
+      .style.setProperty(
+        "--features-fontSize",
+        `${
+          this.whoWeAre.find(
+            (one) => one.key === "who_we_are_font_size_section"
+          ).value
+        }px`
+      );
+
+    if (
+      this.whoWeAre.find(
+        (one) => one.key === "who_we_are_border_position_section"
+      ) &&
+      this.whoWeAre.find(
+        (one) => one.key === "who_we_are_border_position_section"
+      ).value === "both"
+    ) {
+      document
+        .querySelector(".who")
+        .style.setProperty(
+          "--features-border-top",
+          `${
+            this.whoWeAre.find(
+              (one) => one.key === "who_we_are_border_size_section"
+            ).value
+          }px ${
+            this.whoWeAre.find(
+              (one) => one.key === "who_we_are_border_type_section"
+            ).value
+          } ${
+            this.whoWeAre.find(
+              (one) => one.key === "who_we_are_border_color_section"
+            ).value
+          }`
+        );
+
+      document
+        .querySelector(".who")
+        .style.setProperty(
+          "--features-border-bottom",
+          `${
+            this.whoWeAre.find(
+              (one) => one.key === "who_we_are_border_size_section"
+            ).value
+          }px ${
+            this.whoWeAre.find(
+              (one) => one.key === "who_we_are_border_type_section"
+            ).value
+          } ${
+            this.whoWeAre.find(
+              (one) => one.key === "who_we_are_border_color_section"
+            ).value
+          }`
+        );
+    } else if (
+      this.whoWeAre.find(
+        (one) => one.key === "who_we_are_border_position_section"
+      ) &&
+      this.whoWeAre.find(
+        (one) => one.key === "who_we_are_border_position_section"
+      ).value === "top"
+    ) {
+      document
+        .querySelector(".who")
+        .style.setProperty(
+          "--features-border-top",
+          `${
+            this.whoWeAre.find(
+              (one) => one.key === "who_we_are_border_size_section"
+            ).value
+          }px ${
+            this.whoWeAre.find(
+              (one) => one.key === "who_we_are_border_type_section"
+            ).value
+          } ${
+            this.whoWeAre.find(
+              (one) => one.key === "who_we_are_border_color_section"
+            ).value
+          }`
+        );
+    } else if (
+      this.whoWeAre.find(
+        (one) => one.key === "who_we_are_border_position_section"
+      ) &&
+      this.whoWeAre.find(
+        (one) => one.key === "who_we_are_border_position_section"
+      ).value === "top"
+    ) {
+      document
+        .querySelector(".who")
+        .style.setProperty(
+          "--features-border-bottom",
+          `${
+            this.whoWeAre.find(
+              (one) => one.key === "who_we_are_border_size_section"
+            ).value
+          }px ${
+            this.whoWeAre.find(
+              (one) => one.key === "who_we_are_border_type_section"
+            ).value
+          } ${
+            this.whoWeAre.find(
+              (one) => one.key === "who_we_are_border_color_section"
+            ).value
+          }`
+        );
+    }
+  },
 };
 </script>
-<style lang="css">
+<style lang="scss">
 .who {
   padding: 80px 50px 100px;
+  --features-bg: #fff;
+  --features-fontSize: 20px;
+  --features-border-top: 0px solid #fff;
+  --features-border-bottom: 0px solid #fff;
+
+  background: var(--features-bg);
+  border-top: var(--features-border-top);
+  border-bottom: var(--features-border-bottom);
+  background-repeat: no-repeat;
+  background-size: cover;
+  h1 {
+    font-size: var(--features-fontSize);
+  }
 }
 .who h1 {
   color: rgb(51, 51, 51);
-  font-size: 42px;
+  /* font-size: 42px; */
   font-weight: 700;
   line-height: 52px;
 }

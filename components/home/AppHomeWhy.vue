@@ -75,13 +75,153 @@ export default {
   data() {
     return {};
   },
-
   methods: {},
+  mounted() {
+    document
+      .querySelector(".why")
+      .style.setProperty(
+        "--features-bg",
+        this.whyUsSection.find(
+          (one) => one.key === "why_choose_us_background_active_section"
+        ).value === "color"
+          ? this.whyUsSection.find(
+              (one) => one.key === "why_choose_us_background_color_section"
+            ).value
+          : `url(${
+              this.whyUsSection.find(
+                (one) => one.key === "why_choose_us_background_image_section"
+              ).value
+            })`
+      );
+
+    document
+      .querySelector(".why")
+      .style.setProperty(
+        "--features-fontSize",
+        `${
+          this.whyUsSection.find(
+            (one) => one.key === "why_choose_us_font_size_section"
+          ).value
+        }px`
+      );
+
+    if (
+      this.whyUsSection.find(
+        (one) => one.key === "why_choose_us_border_position_section"
+      ) &&
+      this.whyUsSection.find(
+        (one) => one.key === "why_choose_us_border_position_section"
+      ).value === "both"
+    ) {
+      document
+        .querySelector(".why")
+        .style.setProperty(
+          "--features-border-top",
+          `${
+            this.whyUsSection.find(
+              (one) => one.key === "why_choose_us_border_size_section"
+            ).value
+          }px ${
+            this.whyUsSection.find(
+              (one) => one.key === "why_choose_us_border_type_section"
+            ).value
+          } ${
+            this.whyUsSection.find(
+              (one) => one.key === "why_choose_us_border_color_section"
+            ).value
+          }`
+        );
+
+      document
+        .querySelector(".why")
+        .style.setProperty(
+          "--features-border-bottom",
+          `${
+            this.whyUsSection.find(
+              (one) => one.key === "why_choose_us_border_size_section"
+            ).value
+          }px ${
+            this.whyUsSection.find(
+              (one) => one.key === "why_choose_us_border_type_section"
+            ).value
+          } ${
+            this.whyUsSection.find(
+              (one) => one.key === "why_choose_us_border_color_section"
+            ).value
+          }`
+        );
+    } else if (
+      this.whyUsSection.find(
+        (one) => one.key === "why_choose_us_border_position_section"
+      ) &&
+      this.whyUsSection.find(
+        (one) => one.key === "why_choose_us_border_position_section"
+      ).value === "top"
+    ) {
+      document
+        .querySelector(".why")
+        .style.setProperty(
+          "--features-border-top",
+          `${
+            this.whyUsSection.find(
+              (one) => one.key === "why_choose_us_border_size_section"
+            ).value
+          }px ${
+            this.whyUsSection.find(
+              (one) => one.key === "why_choose_us_border_type_section"
+            ).value
+          } ${
+            this.whyUsSection.find(
+              (one) => one.key === "why_choose_us_border_color_section"
+            ).value
+          }`
+        );
+    } else if (
+      this.whyUsSection.find(
+        (one) => one.key === "why_choose_us_border_position_section"
+      ) &&
+      this.whyUsSection.find(
+        (one) => one.key === "why_choose_us_border_position_section"
+      ).value === "top"
+    ) {
+      document
+        .querySelector(".why")
+        .style.setProperty(
+          "--features-border-bottom",
+          `${
+            this.whyUsSection.find(
+              (one) => one.key === "why_choose_us_border_size_section"
+            ).value
+          }px ${
+            this.whyUsSection.find(
+              (one) => one.key === "why_choose_us_border_type_section"
+            ).value
+          } ${
+            this.whyUsSection.find(
+              (one) => one.key === "why_choose_us_border_color_section"
+            ).value
+          }`
+        );
+    }
+  },
 };
 </script>
 <style lang="scss">
 .why {
   padding: 0;
+  --features-bg: #fff;
+  --features-fontSize: 20px;
+  --features-border-top: 0px solid #fff;
+  --features-border-bottom: 0px solid #fff;
+
+  background: var(--features-bg);
+  border-top: var(--features-border-top);
+  border-bottom: var(--features-border-bottom);
+  background-repeat: no-repeat;
+  background-size: cover;
+  h1 {
+    font-size: var(--features-fontSize);
+  }
 }
 .why h1 {
   color: rgb(51, 51, 51);
@@ -124,7 +264,7 @@ export default {
   right: 36%;
 }
 .why .text {
-  background-color: #f7f7f7;
+  /* background-color: #f7f7f7; */
   padding: 80px 5% 60px;
 }
 .why .text p {

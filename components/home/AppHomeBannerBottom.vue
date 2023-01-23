@@ -1,5 +1,5 @@
 <template>
-  <section class="banner">
+  <section class="banner customBanner">
     <div class="row m-0 justify-content-center">
       <h2 class="text-center">Check Out Our Social Links!</h2>
       <div class="heading-spacer">
@@ -66,13 +66,15 @@ export default {
 };
 </script>
 <style lang="css">
-.banner {
+.customBanner {
   background-color: rgba(0, 0, 0, 0);
   background-image: -webkit-linear-gradient(
     left,
     rgb(38, 6, 51) 0%,
     rgb(236, 97, 93) 100%
-  );
+  ) !important;
+}
+.banner {
   padding: 60px 30px 80px;
 }
 .banner h2 {

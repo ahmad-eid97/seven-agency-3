@@ -31,11 +31,11 @@ export default {
 <style lang="css">
 .banner {
   background-color: rgba(0, 0, 0, 0);
-  background-image: -webkit-linear-gradient(
+  /* background-image: -webkit-linear-gradient(
     left,
     rgb(38, 6, 51) 0%,
     rgb(236, 97, 93) 100%
-  );
+  ); */
   padding: 50px 0 40px;
 }
 

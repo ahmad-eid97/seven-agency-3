@@ -106,8 +106,131 @@ export default {
   data() {
     return {};
   },
-
   methods: {},
+  mounted() {
+    document
+      .querySelector(".process")
+      .style.setProperty(
+        "--process-bg",
+        this.process.find(
+          (one) => one.key === "process_background_active_section"
+        ).value === "color"
+          ? this.process.find(
+              (one) => one.key === "process_background_color_section"
+            ).value
+          : `url(${
+              this.process.find(
+                (one) => one.key === "process_background_image_section"
+              ).value
+            })`
+      );
+
+    document
+      .querySelector(".process")
+      .style.setProperty(
+        "--process-fontSize",
+        `${
+          this.process.find((one) => one.key === "process_font_size_section")
+            .value
+        }px`
+      );
+
+    if (
+      this.process.find(
+        (one) => one.key === "process_border_position_section"
+      ) &&
+      this.process.find((one) => one.key === "process_border_position_section")
+        .value === "both"
+    ) {
+      document
+        .querySelector(".process")
+        .style.setProperty(
+          "--process-border-top",
+          `${
+            this.process.find(
+              (one) => one.key === "process_border_size_section"
+            ).value
+          }px ${
+            this.process.find(
+              (one) => one.key === "process_border_type_section"
+            ).value
+          } ${
+            this.process.find(
+              (one) => one.key === "process_border_color_section"
+            ).value
+          }`
+        );
+
+      document
+        .querySelector(".process")
+        .style.setProperty(
+          "--process-border-bottom",
+          `${
+            this.process.find(
+              (one) => one.key === "process_border_size_section"
+            ).value
+          }px ${
+            this.process.find(
+              (one) => one.key === "process_border_type_section"
+            ).value
+          } ${
+            this.process.find(
+              (one) => one.key === "process_border_color_section"
+            ).value
+          }`
+        );
+    } else if (
+      this.process.find(
+        (one) => one.key === "process_border_position_section"
+      ) &&
+      this.process.find((one) => one.key === "process_border_position_section")
+        .value === "top"
+    ) {
+      document
+        .querySelector(".process")
+        .style.setProperty(
+          "--process-border-top",
+          `${
+            this.process.find(
+              (one) => one.key === "process_border_size_section"
+            ).value
+          }px ${
+            this.process.find(
+              (one) => one.key === "process_border_type_section"
+            ).value
+          } ${
+            this.process.find(
+              (one) => one.key === "process_border_color_section"
+            ).value
+          }`
+        );
+    } else if (
+      this.process.find(
+        (one) => one.key === "process_border_position_section"
+      ) &&
+      this.process.find((one) => one.key === "process_border_position_section")
+        .value === "top"
+    ) {
+      document
+        .querySelector(".process")
+        .style.setProperty(
+          "--process-border-bottom",
+          `${
+            this.process.find(
+              (one) => one.key === "process_border_size_section"
+            ).value
+          }px ${
+            this.process.find(
+              (one) => one.key === "process_border_type_section"
+            ).value
+          } ${
+            this.process.find(
+              (one) => one.key === "process_border_color_section"
+            ).value
+          }`
+        );
+    }
+  },
 };
 </script>
 <style lang="scss">
@@ -115,11 +238,22 @@ export default {
   background-size: cover;
   background-repeat: no-repeat;
   background-color: rgba(0, 0, 0, 0);
-  background-image: url("https://the7.io/agency/wp-content/uploads/sites/43/2017/10/bg003.jpg");
+  /* background-image: url("https://the7.io/agency/wp-content/uploads/sites/43/2017/10/bg003.jpg"); */
   background-attachment: scroll;
   padding: 60px 30px 80px;
   position: relative;
   text-align: center;
+  --process-bg: #fff;
+  --process-fontSize: 20px;
+  --process-border-top: 0px solid #fff;
+  --process-border-bottom: 0px solid #fff;
+
+  background: var(--process-bg) !important;
+  border-top: var(--process-border-top);
+  border-bottom: var(--process-border-bottom);
+  h2 {
+    font-size: var(--process-fontSize);
+  }
 }
 .process::after {
   top: 0;
