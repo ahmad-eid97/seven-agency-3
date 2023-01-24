@@ -182,7 +182,7 @@ export default {
       ) &&
       this.whyUsSection.find(
         (one) => one.key === "why_choose_us_border_position_section"
-      ).value === "top"
+      ).value === "bottom"
     ) {
       document
         .querySelector(".why")

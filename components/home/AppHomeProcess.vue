@@ -209,7 +209,7 @@ export default {
         (one) => one.key === "process_border_position_section"
       ) &&
       this.process.find((one) => one.key === "process_border_position_section")
-        .value === "top"
+        .value === "bottom"
     ) {
       document
         .querySelector(".process")

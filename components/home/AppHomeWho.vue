@@ -212,7 +212,7 @@ export default {
       ) &&
       this.whoWeAre.find(
         (one) => one.key === "who_we_are_border_position_section"
-      ).value === "top"
+      ).value === "bottom"
     ) {
       document
         .querySelector(".who")
