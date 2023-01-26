@@ -104,7 +104,7 @@ export default {
   top: 40%;
   width: 60px;
   border-style: solid;
-  border-color: #f3615a;
+  border-color: var(--main-color);
   border-bottom-width: 1px;
   left: 43%;
 }
@@ -116,7 +116,7 @@ export default {
   top: 40%;
   width: 60px;
   border-style: solid;
-  border-color: #f3615a;
+  border-color: var(--main-color);
   border-bottom-width: 1px;
   right: 43%;
 }
@@ -127,7 +127,11 @@ export default {
 }
 
 .projects .image .rollover {
-  background-image: linear-gradient(0deg, #f3615a 0, rgba(248, 96, 17, 0));
+  background-image: linear-gradient(
+    0deg,
+    var(--main-color) 0,
+    rgba(248, 96, 17, 0)
+  );
   transform: translateY(0);
   transition: opacity 0.5s ease-in-out;
   opacity: 0;

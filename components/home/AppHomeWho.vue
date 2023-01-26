@@ -277,7 +277,7 @@ export default {
   top: 40%;
   width: 60px;
   border-style: solid;
-  border-color: #f3615a;
+  border-color: var(--main-color);
   border-bottom-width: 1px;
   left: 43%;
 }
@@ -289,7 +289,7 @@ export default {
   top: 40%;
   width: 60px;
   border-style: solid;
-  border-color: #f3615a;
+  border-color: var(--main-color);
   border-bottom-width: 1px;
   right: 43%;
 }
@@ -317,7 +317,7 @@ export default {
   padding-right: 14px;
   padding-top: 8px;
   text-align: center;
-  background-color: #f3615a;
+  background-color: var(--main-color);
   border-radius: 0;
   width: 180px;
   font-weight: 700;

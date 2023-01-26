@@ -48,7 +48,7 @@ export default {
   margin-bottom: 8px;
   font-weight: 600;
   display: block;
-  color: #f3615a;
+  color: var(--main-color);
 }
 .team-area .section-title h2 {
   font-weight: 400;

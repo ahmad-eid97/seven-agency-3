@@ -78,7 +78,7 @@ export default {
   padding: 60px 30px 80px;
 }
 .banner h2 {
-  color: var(--main-color);
+  color: #fff;
   font-weight: 700;
   font-size: 26px;
   line-height: 36px;
@@ -101,7 +101,7 @@ export default {
   top: 40%;
   width: 60px;
   border-style: solid;
-  border-color: #f3615a;
+  border-color: var(--main-color);
   border-bottom-width: 1px;
   left: 43%;
 }
@@ -113,7 +113,7 @@ export default {
   top: 40%;
   width: 60px;
   border-style: solid;
-  border-color: #f3615a;
+  border-color: var(--main-color);
   border-bottom-width: 1px;
   right: 43%;
 }
@@ -162,7 +162,7 @@ export default {
 }
 .banner .social-bottom a {
   color: #ffffff;
-  background: #f3615a;
+  background: var(--main-color);
   width: 70px;
   height: 70px;
   line-height: 70px;

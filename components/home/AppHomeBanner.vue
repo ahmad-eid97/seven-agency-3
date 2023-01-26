@@ -204,7 +204,7 @@ export default {
   top: 40%;
   width: 60px;
   border-style: solid;
-  border-color: #f3615a;
+  border-color: var(--main-color);
   border-bottom-width: 1px;
   left: 43%;
 }
@@ -216,7 +216,7 @@ export default {
   top: 40%;
   width: 60px;
   border-style: solid;
-  border-color: #f3615a;
+  border-color: var(--main-color);
   border-bottom-width: 1px;
   right: 43%;
 }

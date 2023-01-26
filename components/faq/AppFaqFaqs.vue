@@ -119,7 +119,7 @@ export default {
   -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.07);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.07);
   border-radius: 0;
-  border: 3px solid #f3615a;
+  border: 3px solid var(--main-color);
 }
 .faq-content .faq-accordion .accordion .accordion-title {
   padding: 15px 60px 15px 20px;
@@ -164,7 +164,7 @@ export default {
   display: none;
 }
 .faq-content .faq-accordion .accordion .accordion-title {
-  background-color: #f3615a;
+  background-color: var(--main-color);
   background-image: none;
 }
 .faq-content .faq-accordion .accordion .accordion-title.not-collapsed {

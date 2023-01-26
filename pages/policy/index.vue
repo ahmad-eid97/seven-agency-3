@@ -240,7 +240,7 @@ export default {
   margin-bottom: 8px;
   font-weight: 600;
   display: block;
-  color: #f3615a;
+  color: var(--main-color);
 }
 
 .privacy-policy-area .section-title h2 {
@@ -268,7 +268,7 @@ export default {
 }
 .privacy-policy-area .single-content h3 {
   font-size: 24px;
-  color: #f3615a;
+  color: var(--main-color);
   margin-bottom: 15px;
 }
 .privacy-policy-area .single-content p {

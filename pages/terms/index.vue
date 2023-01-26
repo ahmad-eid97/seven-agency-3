@@ -237,7 +237,7 @@ export default {
 }
 .terms-conditions-area .single-content h3 {
   font-size: 24px;
-  color: #f3615a;
+  color: var(--main-color);
   margin-bottom: 15px;
 }
 .terms-conditions-area .single-content p {

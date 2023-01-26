@@ -141,7 +141,7 @@ export default {
             object-fit: contain;
           }
           span {
-            background: rgba(#f3615a, 0.5);
+            background: rgba(var(--main-color), 0.5);
             width: 100%;
             height: 0%;
             position: absolute;
