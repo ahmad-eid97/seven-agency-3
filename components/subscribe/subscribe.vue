@@ -61,6 +61,7 @@ export default {
     align-items: center;
     h3 {
       margin-bottom: 0;
+      color: #fff;
       @include md {
         margin-bottom: 10px;
       }

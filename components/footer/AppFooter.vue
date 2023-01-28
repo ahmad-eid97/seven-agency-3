@@ -5,7 +5,10 @@
       <div class="row mx-0 align-items-center justify-content-between">
         <div class="col-auto">
           <img
-            src="/assets/images/logo.png"
+            :src="
+              $store.state.websiteSettings.find((one) => one.key === 'logo')
+                .plain_value
+            "
             alt="logoImage"
             style="width: 200px"
           />
@@ -13,7 +16,12 @@
         </div>
         <div class="col-auto">
           <span class="mx-3">
-            <span style="color: #d0544e">tel:</span> Call Us (555) 802-1234
+            <span style="color: #d0544e">tel:</span> Call Us:
+            {{
+              $store.state.websiteSettings.find(
+                (one) => one.key === "contact_phone"
+              ).plain_value
+            }}
           </span>
           <span>
             <span style="color: #d0544e">mail:</span>
