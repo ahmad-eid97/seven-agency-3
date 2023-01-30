@@ -22,6 +22,8 @@
     </div>
 
     <app-footer></app-footer>
+
+    <popup />
   </div>
 </template>
 
@@ -30,6 +32,7 @@ import Loader from "../components/UIs/Loader.vue";
 import cart from "../components/cart/cart.vue";
 // import AppHeader from '../components/header/AppHeader.vue'
 import AppFooter from "../components/footer/AppFooter.vue";
+import popup from "../components/popup/Popup.vue";
 
 export default {
   name: "App",
@@ -38,6 +41,7 @@ export default {
     AppFooter,
     cart,
     Loader,
+    popup,
   },
   data() {
     return {
