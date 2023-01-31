@@ -25,7 +25,10 @@
                   <i :class="item.icon"></i>
                 </div>
                 <h3>{{ item.number }}.</h3>
-                <div class="icon_list_connector"></div>
+                <div
+                  class="icon_list_connector"
+                  :class="$i18n.locale === 'ar' ? 'arabic' : ''"
+                ></div>
               </li>
             </div>
           </div>
@@ -71,7 +74,10 @@
 
             <h3>{{ item.number }}.</h3>
 
-            <div class="icon_list_connector"></div>
+            <div
+              class="icon_list_connector"
+              :class="$i18n.locale === 'ar' ? 'arabic' : ''"
+            ></div>
           </li>
         </ul>
       </div>
@@ -294,7 +300,7 @@ export default {
   content: "";
   position: absolute;
   bottom: 50%;
-  right: 0;
+  /* right: 0; */
   top: 40%;
   width: 60px;
   border-style: solid;
@@ -396,6 +402,10 @@ ul {
   top: 45px;
   width: 385px;
   left: 192.5px;
+  &.arabic {
+    left: unset;
+    right: 192.5px;
+  }
 }
 .process .text {
   width: 385px;

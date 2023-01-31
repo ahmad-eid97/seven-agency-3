@@ -100,7 +100,7 @@ export default {
   content: "";
   position: absolute;
   bottom: 50%;
-  right: 0;
+  /* right: 0; */
   top: 40%;
   width: 60px;
   border-style: solid;

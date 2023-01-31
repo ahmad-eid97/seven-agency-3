@@ -22,7 +22,7 @@
             class="col-md-6 col-lg-4 my-3 project"
             v-for="(item, imageIndex) in projects"
             :key="imageIndex"
-            @click="index = imageIndex"
+            @click="openImage(imageIndex)"
           >
             <div
               class="image"
@@ -72,7 +72,11 @@ export default {
       index: null,
     };
   },
-  methods: {},
+  methods: {
+    openImage(imageIndex) {
+      this.index = imageIndex;
+    },
+  },
 };
 </script>
 <style lang="css">
@@ -100,7 +104,7 @@ export default {
   content: "";
   position: absolute;
   bottom: 50%;
-  right: 0;
+  /* right: 0; */
   top: 40%;
   width: 60px;
   border-style: solid;

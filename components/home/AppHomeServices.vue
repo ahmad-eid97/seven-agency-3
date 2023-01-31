@@ -27,7 +27,9 @@
         </div>
       </div>
       <div class="servicesBtn">
-        <button @click="$router.push('/services')">See All Services</button>
+        <button @click="$router.push(localePath('/services'))">
+          See All Services
+        </button>
       </div>
     </div>
   </section>
@@ -88,13 +90,13 @@ export default {
   content: "";
   position: absolute;
   bottom: 50%;
-  right: 0;
+  /* right: 0; */
   top: 40%;
   width: 60px;
   border-style: solid;
   border-color: var(--main-color);
   border-bottom-width: 1px;
-  left: 43%;
+  left: 43% !important;
 }
 .services .heading-spacer::after {
   content: "";
@@ -166,6 +168,8 @@ export default {
     background-color: var(--main-color);
     color: #fff;
     padding: 8px 14px 7px;
+    border: none;
+    outline: none;
   }
 }
 </style>

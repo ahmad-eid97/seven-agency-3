@@ -326,3 +326,38 @@ img {
   padding: 5px 15px;
   box-shadow: none !important;
 }
+
+.heading-spacer {
+  margin-bottom: 60px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.heading-spacer i {
+  color: var(--main-color);
+  font-size: 26px;
+}
+.heading-spacer::before {
+  content: "";
+  position: absolute;
+  bottom: 50%;
+  /* right: 0; */
+  top: 40%;
+  width: 60px;
+  border-style: solid;
+  border-color: var(--main-color);
+  border-bottom-width: 1px;
+  left: 43%;
+}
+.heading-spacer::after {
+  content: "";
+  position: absolute;
+  bottom: 50%;
+  right: 0;
+  top: 40%;
+  width: 60px;
+  border-style: solid;
+  border-color: var(--main-color);
+  border-bottom-width: 1px;
+  right: 43%;
+}
