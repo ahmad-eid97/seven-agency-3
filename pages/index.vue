@@ -2,18 +2,33 @@
   <div class="home">
     <app-home-intro></app-home-intro>
     <app-home-partners :partners="partners" />
-    <app-home-who :whoWeAre="whoWeAre" :features="features"></app-home-who>
-    <app-home-why :whyUsSection="whyUsSection"></app-home-why>
-    <app-home-banner :bannerTop="bannerTop"></app-home-banner>
+    <div v-if="whoWeAre.status && features.data">
+      <app-home-who
+        :whoWeAre="whoWeAre.data"
+        :features="features.data"
+      ></app-home-who>
+    </div>
+    <div v-if="whyUsSection.status">
+      <app-home-why :whyUsSection="whyUsSection.data"></app-home-why>
+    </div>
+    <div v-if="bannerTop.status">
+      <app-home-banner :bannerTop="bannerTop.data"></app-home-banner>
+    </div>
     <app-home-what :testimonials="testimonials"></app-home-what>
     <app-home-services :services="services"></app-home-services>
     <app-home-projects :projects="projects"></app-home-projects>
     <app-home-banner-phone></app-home-banner-phone>
     <app-home-owner></app-home-owner>
     <app-home-special :team="team"></app-home-special>
-    <app-home-process :process="process"></app-home-process>
-    <app-home-activities :activities="activities" />
-    <app-home-steps :steps="steps" />
+    <div v-if="process.status">
+      <app-home-process :process="process.data"></app-home-process>
+    </div>
+    <div v-if="activities.status">
+      <app-home-activities :activities="activities.data" />
+    </div>
+    <div v-if="steps.status">
+      <app-home-steps :steps="steps.data" />
+    </div>
     <app-home-blogs :blogs="blogs"></app-home-blogs>
     <app-home-contact></app-home-contact>
     <app-home-message></app-home-message>
@@ -165,20 +180,19 @@ export default {
     });
 
     return {
-      whyUsSection: whyUsSection.data.data,
+      whyUsSection: whyUsSection.data,
       partners: partners.data.data.partners,
-      bannerTop: bannerTop.data.data,
-      features: features.data.data,
-      whoWeAre: whoWeAre.data.data,
+      bannerTop: bannerTop.data,
+      features: features.data,
+      whoWeAre: whoWeAre.data,
       testimonials: testimonials.data.data.testimonials,
-      // partners: partners.data.data.partners,
       services: services.data.data.services,
       process: process.data.data,
       projects: projects.data.data.portfolios,
       team: team.data.data.teams,
       blogs: blogs.data.data.blogs,
-      activities: activities.data.data,
-      steps: steps.data.data,
+      activities: activities.data,
+      steps: steps.data,
     };
   },
   components: {
