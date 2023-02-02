@@ -13,7 +13,7 @@
     <div v-if="$store.state.sectionsStatus.why_choose_us">
       <app-home-why :whyUsSection="whyUsSection"></app-home-why>
     </div>
-    <div v-if="$store.state.sectionsStatus.banner - top">
+    <div v-if="$store.state.sectionsStatus['banner-top']">
       <app-home-banner :bannerTop="bannerTop"></app-home-banner>
     </div>
     <app-home-what :testimonials="testimonials"></app-home-what>
